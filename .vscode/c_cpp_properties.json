@@ -22,8 +22,10 @@
                 "/home/htran/Desktop/Arduino/libraries/Electrical",
                 "/home/htran/Desktop/Arduino/libraries/System",
                 "/home/htran/Desktop/Arduino/libraries/Logger",
+                "/home/htran/Desktop/Arduino/libraries/Timing",
                 "/home/htran/Desktop/Arduino/libraries/Prompt",
                 "/home/htran/Desktop/Arduino/libraries/Pins",
+                "/home/htran/Desktop/Arduino/libraries/Structures",
                 "/home/htran/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include",
                 "/home/htran/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include-fixed",
                 "/home/htran/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/avr/include"

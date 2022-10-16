@@ -1,5 +1,6 @@
 #include "electrical.h"
-
+#include "logger.h"
+#include "datatypes.h"
 namespace Electrical
 {
     double getVoltage(double i, double r) //V=IR
@@ -14,24 +15,61 @@ namespace Electrical
     {
         return v/i;
     }
+    
+    void logVoltage(int total_pins, int read_pin)
+    {
+        double v;
+        char* v_str;
+        char volt_str1[] = "Analog Pin ";
+        char volt_str2[] = " Voltage: ";
+        v=(double)analogRead(read_pin)/1023.0*5.0; //To supplement with System Voltage Active Pins
+        v_str = Datatypes::toCharArray(v);
+        char msg [(strlen(volt_str1)+strlen(volt_str2))+strlen(v_str)+1];
+        sprintf(msg, "%s %s %s %s",volt_str1, volt_str2, (const char *)(read_pin),v_str);
+        free(v_str);
+        Serial.println(msg);
+    }
     void logVoltage(int total_pins, int* read_pins)
     {
-
-        int v;
-        float v_converted;
-        for(int t = 0; t < 10; t++)
+        double v;
+        char volt_str1[] = "Analog Pin ";
+        char volt_str2[] = " Voltage: ";
+        char* volts[total_pins];
+        unsigned int num_chars = 0;
+        unsigned int i = 0;
+        for(; i < total_pins; i++)
         {
-            for(int i = 0; i < total_pins; i++)
-            {
-                v=analogRead(read_pins[i]);
-                v_converted=(float)v/1023.0*5.0;
-                Serial.print("Voltage at ");
-                Serial.print(read_pins[i]);
-                Serial.print(": ");
-                Serial.println(v_converted);
-            };
-            delay(50);
-        }
+            v=(double)analogRead(read_pins[i])/1023.0*5.0; //To supplement with System Voltage Active Pins
+            volts[i] = Datatypes::toCharArray(v);
+            num_chars+=strlen(volts[i]);
+        };
+        char msg [(strlen(volt_str1)+strlen(volt_str2))+num_chars+1];
+        i = 0;
+        for(; i < total_pins;i++)
+        {
+            strcat(msg,volt_str1);
+            strcat(msg, (const char *)(read_pins[i]));
+            strcat(msg,volt_str2);
+            strcat(msg,volts[i]);
+            strcat(msg,"\n");
+            free(volts[i]);
+        };
+        Serial.println(msg);
+    }
 
+    double getVoltage(int total_pins, int read_pin)
+    {
+        return (double)analogRead(read_pin)/1023.0*5.0; //To supplement with System Voltage Active Pins
+    }
+    double* getVoltage(int total_pins, int* read_pins)
+    {
+        double* volts = new double [total_pins];
+        unsigned int i = 0;
+        for(; i < total_pins; i++)
+        {
+            //To supplement with System Voltage Active Pins
+            volts[i] = (double)analogRead(read_pins[i])/1023.0*5.0;
+        };
+        return volts;
     }
 }

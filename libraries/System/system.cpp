@@ -1,6 +1,6 @@
 #include "system.h"
 #include "logger.h"
-
+#include "datatypes.h"
 namespace System
 {
     unsigned long int SystemProperties::cpu_frequency = NULL;
@@ -11,10 +11,7 @@ namespace System
     unsigned long int SystemProperties::adc_frequency = NULL;
     double SystemProperties::adc_sampling_period = NULL;
     double SystemProperties::debug_period = NULL;
-    double SystemProperties::timer = 0.0;
 };
-
-
 
 void System::getInfo()
 {
@@ -39,12 +36,12 @@ void System::getInfo()
     System::SystemProperties::adc_sampling_period = adc_sampling_period;
     System::SystemProperties::debug_period = debug_period;
 
-    char * adc_p_str = Logger::floatToChar(adc_sampling_period);
-    char * br_str = Logger::floatToChar(baud_period);
-    char * adc_r_str = Logger::floatToChar(1/(adc_sampling_period)*pow((double)10,6));
-    char * debug_p_str = Logger::floatToChar(debug_period);
+    char * adc_p_str = Datatypes::toCharArray(adc_sampling_period);
+    char * br_str = Datatypes::toCharArray(baud_period);
+    char * adc_r_str = Datatypes::toCharArray(1/(adc_sampling_period)*pow((double)10,6));
+    char * debug_p_str = Datatypes::toCharArray(debug_period);
     sprintf(msg_str,"Baud: %lu\nBaud (Byte) %lu\nBaud Period: %s microseconds per byte\nSuggested Debug Period: %s\nCPU Speed: %lu Mhz\nADC Conversion: 14 cycles\nADC Speed: %lu kHz\nADC Sampling Period: %s microseconds per sample\nADC Sampling Rate: %s hz\n",baud,baud_byte, br_str, debug_p_str, clock_speed,adc_clock_speed, adc_p_str, adc_r_str);
-    Logger::safeLog(msg_str);
+    Serial.println(msg_str);
     delete adc_p_str;
     delete br_str;
     delete adc_r_str;

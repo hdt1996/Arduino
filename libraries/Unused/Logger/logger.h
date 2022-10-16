@@ -20,8 +20,6 @@ namespace Logger
         int countLengthCharArr(char*** str_arr);
         char** build2dArraybyStrLiteral(char* arg_string, const char* delim);
     };
-
     void logStrVars(char* f_string, char** str_arr, int str_size);
     void logStrLiterals(const char* f_string, const char* args_str, int str_size);
-
 }
