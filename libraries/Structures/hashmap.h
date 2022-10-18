@@ -8,53 +8,53 @@
         {
             unsigned int hash(const char *key);
 
-            template<typename MEMBER>
+            template<typename BASE>
             struct Entry;
 
-            template<typename MEMBER>
+            template<typename BASE>
             struct Map;
 
-            template<typename MEMBER>
-            Map<MEMBER>* init();
+            template<typename BASE>
+            Map<BASE>* init();
 
-            template<typename MEMBER, typename ARG>
-            void updateValue(Entry<MEMBER>* entry, ARG value);
+            template<typename ARG, typename BASE>
+            void updateValue(Entry<BASE>* entry, ARG value);
 
-            template<typename MEMBER, typename ARG>
-            void updateValue(Entry<MEMBER>* entry, const char* value);
+            template<typename ARG, typename BASE>
+            void updateValue(Entry<BASE>* entry, const char* value);
 
-            template<typename MEMBER, typename ARG, typename BASE>
-            Entry<MEMBER>* allocEntry(const char key, ARG value);
+            template<typename ARG, typename BASE>
+            Entry<BASE>* allocEntry(const char key, ARG value);
 
-            template<typename MEMBER, typename ARG, typename BASE>
-            void setEntry(Map<MEMBER> *htbl, const char* key, ARG value);
+            template<typename ARG, typename BASE>
+            void setEntry(Map<BASE> *htbl, const char* key, ARG value);
 
-            template<typename MEMBER>
-            Entry<MEMBER>* getEntry(Map<MEMBER> *htbl, const char* key);
+            template<typename BASE>
+            Entry<BASE>* getEntry(Map<BASE> *htbl, const char* key);
 
-            template<typename MEMBER>
-            void printEntries(Map<MEMBER> *htbl);
+            template<typename BASE>
+            void printEntries(Map<BASE> *htbl);
 
-            template<typename MEMBER>
-            int removeEntry(Map<MEMBER> *htbl, const char *key);
+            template<typename BASE>
+            int removeEntry(Map<BASE> *htbl, const char *key);
 
-            template<typename MEMBER>
-            int prune(Map<MEMBER>** htbl_ptr);
+            template<typename BASE>
+            int prune(Map<BASE>** htbl_ptr);
         };
 
-        template <typename MEMBER, typename ARG, typename BASE>
+        template <typename ARG, typename BASE>
         class Dictionary
         {
             private:
                 unsigned int hash(const char *key);
-                HashMap::Map<MEMBER>* init();
-                HashMap::Entry<MEMBER>* allocEntry(const char key, ARG value);
-                HashMap::Map<MEMBER>* hashtable;
+                HashMap::Map<BASE>* init();
+                HashMap::Entry<BASE>* allocEntry(const char key, ARG value);
+                HashMap::Map<BASE>* hashtable;
             public:
                 Dictionary();
-                void updateValue(HashMap::Entry<MEMBER>* entry, ARG value);
+                void updateValue(HashMap::Entry<BASE>* entry, ARG value);
                 void setEntry(const char* key, ARG value);
-                HashMap::Entry<MEMBER>* getEntry(const char* key);
+                HashMap::Entry<BASE>* getEntry(const char* key);
                 int prune();
                 int removeEntry(const char *key);
                 void printEntries();

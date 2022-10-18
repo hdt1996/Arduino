@@ -9,39 +9,39 @@
   {
     namespace HashMap
     {
-      template<typename MEMBER>
+      template<typename BASE>
       struct Entry
       {
         char* key;
-        MEMBER value;
-        Entry<MEMBER>* next;
+        BASE* value;
+        Entry<BASE>* next;
 
       };
 
-      template<typename MEMBER>
+      template<typename BASE>
       struct Map
       {
-        Entry<MEMBER> **entries;
+        Entry<BASE> **entries;
       };
 
-      template<typename MEMBER, typename ARG>
-      void updateValue(Entry<MEMBER>* entry, ARG value)
+      template<typename ARG, typename BASE>
+      void updateValue(Entry<BASE>* entry, ARG value)
       {
         *(entry->value)=value;
       };
 
-      template<typename MEMBER, typename ARG>
-      void updateValue(Entry<MEMBER>* entry, const char* value)
+      template<typename ARG, typename BASE>
+      void updateValue(Entry<BASE>* entry, const char* value)
       {
         strcpy(entry->value,value);
       };
       
 
-      template<typename MEMBER>
-      Map<MEMBER>* init()
+      template<typename BASE>
+      Map<BASE>* init()
       {
-        Map<MEMBER>* htbl = new Map<MEMBER>; //assign memory pointer location for this datatype
-        htbl->entries = new Entry<MEMBER>* [sizeof(Entry<MEMBER>)*TABLE_SIZE];//malloc(sizeof(Entry) * TABLE_SIZE);
+        Map<BASE>* htbl = new Map<BASE>; //assign memory pointer location for this datatype
+        htbl->entries = new Entry<BASE>* [sizeof(Entry<BASE>)*TABLE_SIZE];//malloc(sizeof(Entry) * TABLE_SIZE);
         for (int i = 0; i < TABLE_SIZE; i++)
         {
           htbl->entries[i] = NULL;
@@ -49,10 +49,10 @@
         return htbl;
       };
 
-      template<typename MEMBER, typename ARG, typename BASE>
-      Entry<MEMBER>* allocEntry(const char* key, ARG value)
+      template<typename ARG, typename BASE>
+      Entry<BASE>* allocEntry(const char* key, ARG value)
       {
-        Entry<MEMBER>* entry = new Entry<MEMBER>; //malloc(sizeof(Entry+1);
+        Entry<BASE>* entry = new Entry<BASE>; //malloc(sizeof(Entry+1);
         entry->key = new char [strlen(key)+1];
         if(Datatypes::checkForString<ARG>(value))
         {
@@ -63,22 +63,22 @@
           entry->value = new BASE;
         }
         strcpy(entry->key, key);
-        updateValue<MEMBER, ARG>(entry, value);
+        updateValue<ARG, BASE>(entry, value);
         entry->next = NULL;
         return entry;
       };
 
-      template<typename MEMBER, typename ARG, typename BASE>
-      void setEntry(Map<MEMBER> *htbl, const char *key, ARG value)
+      template<typename ARG, typename BASE>
+      void setEntry(Map<BASE> *htbl, const char *key, ARG value)
       {
         unsigned int slot = hash(key);
-        Entry<MEMBER>* entry = htbl->entries[slot];
+        Entry<BASE>* entry = htbl->entries[slot];
         if (entry == NULL)
         {
-          htbl->entries[slot] = allocEntry<MEMBER,ARG,BASE>(key,value);
+          htbl->entries[slot] = allocEntry<ARG,BASE>(key,value);
           return ;
         }
-        Entry<MEMBER> *prev;
+        Entry<BASE> *prev;
         while (entry != NULL)
         {
           if(strcmp(entry->key, key) == 0)
@@ -93,26 +93,26 @@
               entry->value = new BASE;
             }
 
-            updateValue<MEMBER, ARG>(entry, value);
+            updateValue<ARG, BASE>(entry, value);
             return ;
           }
           prev = entry;
           entry = prev->next;
         }
-        prev->next = allocEntry<MEMBER,ARG,BASE>(key,value);
+        prev->next = allocEntry<ARG,BASE>(key,value);
       };
 
-      template <typename MEMBER>
-      int removeEntry(Map<MEMBER> *htbl, const char *key)
+      template <typename BASE>
+      int removeEntry(Map<BASE> *htbl, const char *key)
       {
         unsigned int slot = hash(key);
-        Entry<MEMBER>* entry = htbl->entries[slot];
+        Entry<BASE>* entry = htbl->entries[slot];
         if (entry == NULL)
         {
           return 1;
         }
-        Entry<MEMBER>* prev = NULL;
-        Entry<MEMBER>* next = NULL;
+        Entry<BASE>* prev = NULL;
+        Entry<BASE>* next = NULL;
         unsigned long int curr_i = 0;
         while (entry != NULL) //hash key collision
         {
@@ -124,26 +124,26 @@
             free(entry->key);
             if(prev == NULL && entry->next != NULL) //prev will only be NULL on FIRST ITERATION
             {
-              Serial.println("FREED CONDITION 1");
+              //Serial.println("FREED CONDITION 1");
               htbl->entries[slot]=entry->next;
               free(entry);
               return 0;
             }
             if(prev != NULL && entry->next != NULL) //WE ARE IN THE MIDDLE of nodes
             {
-              Serial.println("FREED CONDITION 2");
+              //Serial.println("FREED CONDITION 2");
               prev->next = entry->next;
               free(entry);
               return 0;
             }
             if(prev!=NULL && entry->next == NULL)
             {
-              Serial.println("FREED CONDITION 3");
+              //Serial.println("FREED CONDITION 3");
               free(entry);
               prev->next = NULL;
               return 0;
             }
-            Serial.println("FREED CONDITION 4");
+            //Serial.println("FREED CONDITION 4");
             free(entry);
             htbl->entries[slot]=NULL;
             return 0;
@@ -155,18 +155,18 @@
         return 1;
       };
 
-      template <typename MEMBER>
-      int prune(Map<MEMBER>** htbl_ptr)
+      template <typename BASE>
+      int prune(Map<BASE>** htbl_ptr)
       {
-        Map<MEMBER>* htbl = *htbl_ptr;
+        Map<BASE>* htbl = *htbl_ptr;
         for (int i = 0; i < TABLE_SIZE; i++)
         {
-          Entry<MEMBER>* entry = htbl->entries[i];
+          Entry<BASE>* entry = htbl->entries[i];
           if (entry == NULL)
           {
             continue;
           }
-          Entry<MEMBER> *prev;
+          Entry<BASE> *prev;
           for(;;)
           {
             free(entry->key);
@@ -186,11 +186,11 @@
         return 0;
       };
       
-      template <typename MEMBER>
-      Entry<MEMBER>*  getEntry(Map<MEMBER> *htbl, const char *key)
+      template <typename BASE>
+      Entry<BASE>*  getEntry(Map<BASE> *htbl, const char *key)
       {
         unsigned int slot = hash(key);
-        Entry<MEMBER>* entry = htbl->entries[slot];
+        Entry<BASE>* entry = htbl->entries[slot];
         if (entry == NULL)
         {
           return NULL;
@@ -206,8 +206,8 @@
         return NULL;
       };
 
-      template <typename MEMBER>
-      void printEntries(Map<MEMBER> *htbl)
+      template <typename BASE>
+      void printEntries(Map<BASE> *htbl)
       {
         const char key_str[]= "Key: ";
         const char val_str[] = "\nValue: ";
@@ -216,7 +216,7 @@
         unsigned long int size;
         for (int i = 0; i < TABLE_SIZE; i++)
         {
-          Entry<MEMBER>* entry = htbl->entries[i];
+          Entry<BASE>* entry = htbl->entries[i];
           if (entry == NULL)
           {
             continue;
@@ -242,64 +242,64 @@
       };
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    unsigned int Dictionary<MEMBER, ARG, BASE>::hash(const char *key)
+   template <typename ARG, typename BASE>
+    unsigned int Dictionary<ARG, BASE>::hash(const char *key)
     {
       return HashMap::hash(key);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    HashMap::Map<MEMBER>* Dictionary<MEMBER, ARG, BASE>::init()
+   template <typename ARG, typename BASE>
+    HashMap::Map<BASE>* Dictionary<ARG, BASE>::init()
     {
-      return HashMap::init<MEMBER>();
+      return HashMap::init<BASE>();
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    HashMap::Entry<MEMBER>* Dictionary<MEMBER, ARG, BASE>::allocEntry(const char key, ARG value)
+   template <typename ARG, typename BASE>
+    HashMap::Entry<BASE>* Dictionary<ARG, BASE>::allocEntry(const char key, ARG value)
     {
-      return HashMap::allocEntry<MEMBER, ARG, BASE>(key, value);
+      return HashMap::allocEntry<ARG, BASE>(key, value);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    Dictionary<MEMBER, ARG, BASE>::Dictionary()
+   template <typename ARG, typename BASE>
+    Dictionary<ARG, BASE>::Dictionary()
     {
       hashtable=this->init();
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    void Dictionary<MEMBER, ARG, BASE>::updateValue(HashMap::Entry<MEMBER>* entry, ARG value)
+   template <typename ARG, typename BASE>
+    void Dictionary<ARG, BASE>::updateValue(HashMap::Entry<BASE>* entry, ARG value)
     {
-      HashMap::updateValue<MEMBER, ARG>(entry, value);
+      HashMap::updateValue<ARG, BASE>(entry, value);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    void Dictionary<MEMBER, ARG, BASE>::setEntry(const char* key, ARG value)
+   template <typename ARG, typename BASE>
+    void Dictionary<ARG, BASE>::setEntry(const char* key, ARG value)
     {
-      HashMap::setEntry<MEMBER,ARG,BASE>(hashtable, key, value);
+      HashMap::setEntry<ARG,BASE>(hashtable, key, value);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    HashMap::Entry<MEMBER>* Dictionary<MEMBER, ARG, BASE>::getEntry(const char* key)
+   template <typename ARG, typename BASE>
+    HashMap::Entry<BASE>* Dictionary<ARG, BASE>::getEntry(const char* key)
     {
-      return HashMap::getEntry<MEMBER>(hashtable, key);
+      return HashMap::getEntry<BASE>(hashtable, key);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    int Dictionary<MEMBER, ARG, BASE>::prune()
+   template <typename ARG, typename BASE>
+    int Dictionary<ARG, BASE>::prune()
     {
-      return HashMap::prune<MEMBER>(&hashtable);
+      return HashMap::prune<BASE>(&hashtable);
     };
 
-    template <typename MEMBER, typename ARG, typename BASE>
-    int Dictionary<MEMBER, ARG, BASE>::removeEntry(const char *key)
+   template <typename ARG, typename BASE>
+    int Dictionary<ARG, BASE>::removeEntry(const char *key)
     {
-      return HashMap::removeEntry<MEMBER>(hashtable, key);
+      return HashMap::removeEntry<BASE>(hashtable, key);
     };
     
-    template <typename MEMBER, typename ARG, typename BASE>
-    void Dictionary<MEMBER, ARG, BASE>::printEntries()
+   template <typename ARG, typename BASE>
+    void Dictionary<ARG, BASE>::printEntries()
     {
-      HashMap::printEntries<MEMBER>(hashtable);
+      HashMap::printEntries<BASE>(hashtable);
     };
 };
   

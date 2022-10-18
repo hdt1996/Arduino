@@ -4,39 +4,39 @@
 
     namespace Datatypes
     {
-        static char* const_char_pstr = "const char*";
-        static char* char_pstr = "char*";
-        static char* float_str="float";
-        static char* double_str="double";
-        static char* int_str="int";
-        static char* long_str="long";
-        static char* bool_str="bool";
-        static char* byte_str="byte";
-        static char* word_str="word";
-        static char* float_pstr="float*";
-        static char* double_pstr="double*";
-        static char* int_pstr="int*";
-        static char* long_pstr="long*";
-        static char* bool_pstr="bool*";
-        static char* byte_pstr="byte*";
-        static char* word_pstr="word*";
+        extern const char* const_char_pstr ;
+        extern const char* char_pstr ;
+        extern const char* float_str;
+        extern const char* double_str;
+        extern const char* int_str;
+        extern const char* long_str;
+        extern const char* bool_str;
+        extern const char* byte_str;
+        extern const char* word_str;
+        extern const char* float_pstr;
+        extern const char* double_pstr;
+        extern const char* int_pstr;
+        extern const char* long_pstr;
+        extern const char* bool_pstr;
+        extern const char* byte_pstr;
+        extern const char* word_pstr;
 
-        char * get(char* val);
-        char * get(const char* val);
-        char * get(float val);
-        char * get(double val);
-        char * get(int val);
-        char * get(long val);
-        char * get(bool val);
-        char * get(byte val);
-        char * get(word val);
-        char * get(float* val);
-        char * get(double* val);
-        char * get(int* val);
-        char * get(long* val);
-        char * get(bool* val);
-        char * get(byte* val);
-        char * get(word* val);
+        const char* get(char* val);
+        const char* get(const char* val);
+        const char* get(float val);
+        const char* get(double val);
+        const char* get(int val);
+        const char* get(long val);
+        const char* get(bool val);
+        const char* get(byte val);
+        const char* get(word val);
+        const char* get(float* val);
+        const char* get(double* val);
+        const char* get(int* val);
+        const char* get(long* val);
+        const char* get(bool* val);
+        const char* get(byte* val);
+        const char* get(word* val);
         
         char* toCharArray(double val);
         char* toCharArray(double* val);
@@ -74,19 +74,37 @@
             template <typename BASE>
             BASE value(BASE* val_ptr);
 
-            template <typename MEMBER, typename ARG, typename BASE>
-            class Data: public Unit
+            template <typename ARG, typename BASE>
+            class MULTI: public Unit
             {
                 private:
-                    MEMBER value_ptr;
-                    char* type;
+                    BASE* value_ptr;
+                    const char* type_ptr;
+                    unsigned int* dimensions;
+                    unsigned int num_dimensions;
                 public:
-                    Data(ARG value);
-                    Data(){};
+                    MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ...);
+                    MULTI(){};
                     void update(ARG new_value);
                     char* valueToString();
-                    MEMBER getPointer();
+                    BASE* getPointer();
                     BASE value();
+                    char* type();
+            };
+            template <typename ARG, typename BASE>
+            class SINGLE: public Unit
+            {
+                private:
+                    BASE* value_ptr;
+                    char* type_ptr;
+                public:
+                    SINGLE(ARG value);
+                    SINGLE(){};
+                    void update(ARG new_value);
+                    char* valueToString();
+                    BASE* getPointer();
+                    BASE value();
+                    char* type();
             };
         };
 

@@ -28,7 +28,7 @@
                 *ptr = new_value;
                 return ptr;
             };
-
+        
             template <typename BASE>
             char* update(const char* new_value)
             {
@@ -73,36 +73,99 @@
                 return *val_ptr;
             };
 
-            ///////////////////////////////////////////// Data Class ///////////////////////////////////////////
-            template <typename MEMBER, typename ARG, typename BASE>
-            Data<MEMBER, ARG, BASE>::Data(ARG value)
+            ///////////////////////////////////////////// Data Class for MultiDimensional Data ///////////////////////////////////////////
+            template <typename ARG, typename BASE>
+            MULTI<ARG, BASE>::MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ... )
             {
                 value_ptr = Container::init<BASE>(value);
-                type = Datatypes::get(value);
+                num_dimensions = num_dimensions;
+                if(type_name == NULL)
+                {
+                    type_ptr = Datatypes::get(value);
+                }
+                else
+                {
+                    type_ptr = new char [strlen(type_name)+1];
+                    strcpy(type_ptr, type_name);
+                }
+
+                dimensions = new unsigned int [num_dimensions];
+                va_list dims;
+                va_start(dims, num_dimensions);
+                unsigned int curr_dim;
+                for(unsigned int n = 0; n < num_dimensions; n++)
+                {   
+                    dimensions[n]=va_arg(dims, unsigned int);
+                };
+                va_end(dims);
             };
 
-            template <typename MEMBER, typename ARG, typename BASE>
-            void Data<MEMBER, ARG, BASE>::update(ARG new_value)
+            template <typename ARG, typename BASE>
+            void MULTI<ARG,BASE>::update(ARG new_value)
             {
                 free(value_ptr); 
                 value_ptr = Container::update<BASE>(new_value);
             };
 
-            template <typename MEMBER, typename ARG, typename BASE>
-            char* Data<MEMBER, ARG, BASE>::valueToString()
+            template <typename ARG, typename BASE>
+            char* MULTI<ARG,BASE>::valueToString()
             {
                 return Datatypes::toCharArray(this->value());
             };
 
-            template <typename MEMBER, typename ARG, typename BASE>
-            MEMBER Data<MEMBER, ARG, BASE>::getPointer()
+            template <typename ARG, typename BASE>
+            BASE* MULTI<ARG,BASE>::getPointer()
             {
                 return value_ptr;
             };
-            template <typename MEMBER, typename ARG, typename BASE>
-            BASE Data<MEMBER, ARG, BASE>::value()
+            template <typename ARG, typename BASE>
+            BASE MULTI<ARG,BASE>::value()
             {
                 return Container::value<BASE>(value_ptr);
+            };
+
+            template <typename ARG, typename BASE>
+            char* MULTI<ARG,BASE>::type()
+            {
+                return type_ptr;
+            };
+
+            /////////////////////////////////////// Class template without N --> Contains only singular Data ////////////////////////////////////
+            template <typename ARG, typename BASE>
+            SINGLE<ARG, BASE>::SINGLE(ARG value)
+            {
+                value_ptr = Container::init<BASE>(value);
+                type_ptr = Datatypes::get(value);
+            };
+
+            template <typename ARG, typename BASE>
+            void SINGLE<ARG,BASE>::update(ARG new_value)
+            {
+                free(value_ptr); 
+                value_ptr = Container::update<BASE>(new_value);
+            };
+
+            template <typename ARG, typename BASE>
+            char* SINGLE<ARG,BASE>::valueToString()
+            {
+                return Datatypes::toCharArray(this->value());
+            };
+
+            template <typename ARG, typename BASE>
+            BASE* SINGLE<ARG,BASE>::getPointer()
+            {
+                return value_ptr;
+            };
+            template <typename ARG, typename BASE>
+            BASE SINGLE<ARG,BASE>::value()
+            {
+                return Container::value<BASE>(value_ptr);
+            };
+
+            template <typename ARG, typename BASE>
+            char* SINGLE<ARG,BASE>::type()
+            {
+                return type_ptr;
             };
         }
 

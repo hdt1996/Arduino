@@ -7,6 +7,8 @@
 #include "prompt.h"
 #include "pins.h"
 #include "hashmap.h"
+#include <stdarg.h>
+#include "checks.h"
 
 int pins[] = {8};
 int rgb_pins[] = {5,6,9};
@@ -20,45 +22,43 @@ void setup(){
   Serial.begin(115200);
   while(!Serial);
   delay(1000);
-  //System::getInfo();
-  Datatypes::Container::Data<char*,const char*, char> test_container("HELLOOOOOO BOY");
-  Structures::Dictionary<char*, const char*, char> dict;
-  dict.setEntry("HELLO","WORLD");
-  dict.printEntries();
-  Serial.println(test_container.valueToString());
-  Serial.println(test_container.getPointer());
-  Datatypes::Container::Data<double*,double, double> test_container2(55555.00);
-  Serial.println(test_container2.valueToString());
-  Serial.println(test_container2.value());
-}
+  System::getInfo();
+  int test_1[5] = {555,2,3,4,5};
+  int test_2 = 5;
+  int test_3[2][2] = {{1,2},{3,4}};
 
+  //Template::Checks::ArrayDims* array_data = Template::getArrayData(test_data);
+
+  //Datatypes::Container::MULTI<double(*)[2], double (*)[2]> test_container2(test_data, "double", 2,4,2);
+  //double x= test_container2.value()[0][0];
+  //Serial.println(x);
+  //Serial.println(test_container2.type());
+  //Serial.println(test_container2.valueToString());
+  //Serial.println(test_container2.value()[0]);
+}
 
 int freq = 2000;
 int original = getFreeMemory();
 void loop()
-{/*
-  Serial.println(original);
+{
+  double test_data[4][1][2]={{{1.0}},{{1.0}},{{1.0}},{{1.0}}};
   Serial.println(getFreeMemory());
-  char test1[]="HUNG0";
-  char test2[]="HUNG1";
-  char test3[]="HUNG2";
-  char test4[]="HUNG3";
-  char test5[]="HUNG4";
-  char test6[]="HUNG5";
-  char test7[]="HUNG6";
-  char test8[]="HUNG7";
-
-  Structures::Dictionary<char*, const char*, char> dict;
-  dict.setEntry(test1,"WORLD");
-  dict.setEntry(test2,"WORLD");
-  dict.setEntry(test3,"WORLD");
-  dict.setEntry(test4,"WORLD");
-  dict.setEntry(test5,"WORLD");
-  dict.setEntry(test6,"WORLD");
-  dict.setEntry(test7,"WORLD");
-  dict.setEntry(test8,"WORLD");
-  dict.removeEntry(test1);
-  dict.removeEntry(test8);
+  Template::Arrays::ArrayData* data = Template::Arrays::getArrayData(&test_data);
+  Serial.println(data->num_dimensions);
+  data->printDimensions();
+  data->prune(data);
+  Serial.println();
+  Serial.println(getFreeMemory());
+  Serial.println();
+  delay(1500);
+  /*
+  Serial.print("Original Memory: ");
+  Serial.print(original);
+  Serial.println();
+  Structures::Dictionary<const char*, char> dict;
   dict.prune();
-  delay(1000);*/
+  Serial.print("Remaining Memory after Prune: ");
+  Serial.print(getFreeMemory());
+  Serial.println();
+  delay(2000);*/
 }
