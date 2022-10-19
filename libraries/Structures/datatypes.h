@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #ifndef DATATYPES
     #define DATATYPES
+    #include "checks.h"
 
     namespace Datatypes
     {
@@ -74,16 +75,21 @@
             template <typename BASE>
             BASE value(BASE* val_ptr);
 
-            template <typename ARG, typename BASE>
+            template <typename BASE, typename ARG>
             class MULTI: public Unit
             {
                 private:
+
+                    typedef typename Template::Arrays::add_pointer<ARG>::type vptr_type;
+                    vptr_type test_ptr;
                     BASE* value_ptr;
                     const char* type_ptr;
                     unsigned int* dimensions;
                     unsigned int num_dimensions;
                 public:
+                    MULTI(ARG value, const char* type_name = NULL, bool detect = false);
                     MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ...);
+
                     MULTI(){};
                     void update(ARG new_value);
                     char* valueToString();

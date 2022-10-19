@@ -48,10 +48,58 @@
                 return recursePointer(arg);
                 }
             };
+
+            template<typename T>
+            PointerUnit* getNDimsbyType()
+            {
+                
+                Checks::is_array<T> is_array;
+                if(is_array.value == true)
+                {
+                    typedef typename Arrays::remove_dimension<T>::type reduced_arr_type;
+                    delay(1000);
+                    Serial.println("Removed Dimension for Pointer-Conversion...");
+                    return getNDimsbyType<reduced_arr_type>();
+                };
+                Pointers::PointerType<T> pointer_type;
+                Pointers::PointerUnit* pointer_unit = dynamic_cast<Pointers::PointerUnit*>(&pointer_type);
+                Serial.println("Last Dimension for Pointer-Conversion...");
+                return pointer_unit;
+            };
+
         }
 
         namespace Arrays
         {
+
+            template<typename T>
+            struct add_pointer{typedef T* type;};
+
+            template<typename T>
+            struct remove_pointer{typedef T type;};
+
+            template<typename T>
+            struct remove_pointer<T*>{typedef T type;};
+
+            template<typename T> //not array
+            struct remove_dimension{typedef T type;};
+
+            template<typename T, int N> //pointer to an array
+            struct remove_dimension<T(*)[N]>
+            {
+                typedef T type;
+                const char* msg = "REMOVED POINTER TO ARRAY DIMENSION";
+            };
+
+            template<typename T, int N> //array
+            struct remove_dimension<T[N]> 
+            {
+                typedef T type;
+                const char* msg = "REMOVED REGULAR ARRAY DIMENSION";
+            };
+
+
+
             struct ArrayData
             {
                 unsigned int* dimensions;

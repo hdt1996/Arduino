@@ -74,8 +74,19 @@
             };
 
             ///////////////////////////////////////////// Data Class for MultiDimensional Data ///////////////////////////////////////////
-            template <typename ARG, typename BASE>
-            MULTI<ARG, BASE>::MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ... )
+            template <typename BASE, typename ARG>
+            MULTI<BASE,ARG>::MULTI(ARG value, const char* type_name = NULL, bool detect = false)
+            {
+                Serial.println("Constructing MULTI Class...");
+                Template::Pointers::PointerUnit*  pointer_data = Template::Pointers::getNDimsbyType<ARG>();
+                pointer_data->test();
+
+                //Serial.println(Template::Arrays::isArray(test_ptr));
+                //BASE** tp1 = test_ptr;
+            };
+
+            template <typename BASE, typename ARG>
+            MULTI<BASE,ARG>::MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ... )
             {
                 value_ptr = Container::init<BASE>(value);
                 num_dimensions = num_dimensions;
@@ -100,32 +111,33 @@
                 va_end(dims);
             };
 
-            template <typename ARG, typename BASE>
-            void MULTI<ARG,BASE>::update(ARG new_value)
+
+            template <typename BASE, typename ARG>
+            void MULTI<BASE,ARG>::update(ARG new_value)
             {
                 free(value_ptr); 
                 value_ptr = Container::update<BASE>(new_value);
             };
 
-            template <typename ARG, typename BASE>
-            char* MULTI<ARG,BASE>::valueToString()
+            template <typename BASE, typename ARG>
+            char* MULTI<BASE,ARG>::valueToString()
             {
                 return Datatypes::toCharArray(this->value());
             };
 
-            template <typename ARG, typename BASE>
-            BASE* MULTI<ARG,BASE>::getPointer()
+            template <typename BASE, typename ARG>
+            BASE* MULTI<BASE,ARG>::getPointer()
             {
                 return value_ptr;
             };
-            template <typename ARG, typename BASE>
-            BASE MULTI<ARG,BASE>::value()
+            template <typename BASE, typename ARG>
+            BASE MULTI<BASE,ARG>::value()
             {
                 return Container::value<BASE>(value_ptr);
             };
 
-            template <typename ARG, typename BASE>
-            char* MULTI<ARG,BASE>::type()
+            template <typename BASE, typename ARG>
+            char* MULTI<BASE,ARG>::type()
             {
                 return type_ptr;
             };

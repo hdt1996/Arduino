@@ -17,6 +17,15 @@ int buzz_pins[]={10};
 float rgb_intensities[]={.15f,.85f,.85f};
 unsigned int timer = 0;
 
+void test(double (*test)[4][1][2])
+{
+  Serial.println((*test)[0][0][0]);
+};
+
+void test(double (*test)[1][2])
+{
+  Serial.println(test[0][0][0]);
+};
 
 void setup(){
   Serial.begin(115200);
@@ -29,18 +38,13 @@ void setup(){
 
   //Template::Checks::ArrayDims* array_data = Template::getArrayData(test_data);
 
-  //Datatypes::Container::MULTI<double(*)[2], double (*)[2]> test_container2(test_data, "double", 2,4,2);
+
   //double x= test_container2.value()[0][0];
   //Serial.println(x);
   //Serial.println(test_container2.type());
   //Serial.println(test_container2.valueToString());
   //Serial.println(test_container2.value()[0]);
-}
 
-int freq = 2000;
-int original = getFreeMemory();
-void loop()
-{
   double test_data[4][1][2]={{{1.0}},{{1.0}},{{1.0}},{{1.0}}};
   Serial.println(getFreeMemory());
   Template::Arrays::ArrayData* data = Template::Arrays::getArrayData(&test_data);
@@ -49,7 +53,16 @@ void loop()
   data->prune(data);
   Serial.println();
   Serial.println(getFreeMemory());
-  Serial.println();
+  Serial.println();  
+  test(&test_data);
+  Datatypes::Container::MULTI<double(*)[4][1][2],double(*)[4][1][2]> test_container2(&test_data, "double",true);
+}
+
+int freq = 2000;
+int original = getFreeMemory();
+void loop()
+{
+
   delay(1500);
   /*
   Serial.print("Original Memory: ");

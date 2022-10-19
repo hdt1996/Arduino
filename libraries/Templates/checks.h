@@ -26,6 +26,25 @@
 
         namespace Arrays
         {
+            template<typename T>
+            struct add_pointer;
+
+            template<typename T>
+            struct remove_pointer;
+
+            template<typename T>
+            struct remove_pointer<T*>;
+
+            template<typename T> //not array
+            struct remove_dimension;
+
+            template<typename T, int N> //pointer to an array
+            struct remove_dimension<T(*)[N]>;
+
+            template<typename T, int N> //array
+            struct remove_dimension<T[N]>;
+
+
             struct ArrayData;   
 
             template<typename T>
@@ -50,6 +69,31 @@
 
         namespace Pointers
         {
+            struct PointerUnit{
+                void test()
+                {
+                    this->print();
+                };
+                virtual void print()
+                {
+                    Serial.println("I am the parent");
+                };
+                PointerUnit(){};
+            };
+
+            template<typename T>
+            struct PointerType: public PointerUnit
+            {
+                typedef T type;
+                const char* msg = "RESULT found...";
+                void print() override
+                {
+                    Serial.println("I am the child");
+                };
+                PointerType(){};
+            };
+
+
             template<typename T>
             T recursePointer(T* arg); //main recursion for pointers
 
@@ -58,8 +102,10 @@
 
             template<typename T, typename R>
             R getValue(T arg); 
-        }
 
-    }
+            template<typename T>
+            Pointers::PointerUnit* getNDimsbyType();
+        };
+    };
     #include "checks.hpp"
 #endif
