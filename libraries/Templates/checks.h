@@ -1,5 +1,6 @@
 #ifndef TEMPLATE_CHECKS 
     #define TEMPLATE_CHECKS
+    #include <Arduino.h>
 
     namespace Template
     {
@@ -72,25 +73,23 @@
             struct PointerUnit{
                 void test()
                 {
-                    this->print();
+                    this->testPrint();
                 };
-                virtual void print()
+                virtual void testPrint()
                 {
                     Serial.println("I am the parent");
                 };
-                PointerUnit(){};
+
             };
 
             template<typename T>
-            struct PointerType: public PointerUnit
+            struct PointerDerived: public PointerUnit
             {
                 typedef T type;
-                const char* msg = "RESULT found...";
-                void print() override
+                void testPrint()
                 {
                     Serial.println("I am the child");
                 };
-                PointerType(){};
             };
 
 

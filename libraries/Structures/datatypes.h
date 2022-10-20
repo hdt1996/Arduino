@@ -81,6 +81,7 @@
                 private:
 
                     typedef typename Template::Arrays::add_pointer<ARG>::type vptr_type;
+                    
                     vptr_type test_ptr;
                     BASE* value_ptr;
                     const char* type_ptr;

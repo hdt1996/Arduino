@@ -27,6 +27,8 @@
 
         namespace Pointers
         {
+
+
             template<typename T>
             T recursePointer(T* arg) //main recursion for pointers
             {
@@ -49,24 +51,23 @@
                 }
             };
 
-            template<typename T>
+            template<typename T> //double[4][5][4]
             PointerUnit* getNDimsbyType()
             {
-                
                 Checks::is_array<T> is_array;
                 if(is_array.value == true)
                 {
                     typedef typename Arrays::remove_dimension<T>::type reduced_arr_type;
-                    delay(1000);
                     Serial.println("Removed Dimension for Pointer-Conversion...");
                     return getNDimsbyType<reduced_arr_type>();
                 };
-                Pointers::PointerType<T> pointer_type;
+                Pointers::PointerDerived<T> pointer_type;
                 Pointers::PointerUnit* pointer_unit = dynamic_cast<Pointers::PointerUnit*>(&pointer_type);
+                //T = double(*);
+                //Can dynamic cast<double*> to get child object...
                 Serial.println("Last Dimension for Pointer-Conversion...");
                 return pointer_unit;
             };
-
         }
 
         namespace Arrays

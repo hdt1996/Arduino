@@ -27,18 +27,18 @@ void test(double (*test)[1][2])
   Serial.println(test[0][0][0]);
 };
 
+
 void setup(){
   Serial.begin(115200);
   while(!Serial);
   delay(1000);
+
   System::getInfo();
   int test_1[5] = {555,2,3,4,5};
   int test_2 = 5;
   int test_3[2][2] = {{1,2},{3,4}};
 
   //Template::Checks::ArrayDims* array_data = Template::getArrayData(test_data);
-
-
   //double x= test_container2.value()[0][0];
   //Serial.println(x);
   //Serial.println(test_container2.type());

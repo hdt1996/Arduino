@@ -2,5 +2,5 @@
     "configuration": "cpu=atmega2560",
     "board": "arduino:avr:mega",
     "sketch": "PROTO_1/PROTO_1.ino",
-    "port": "/dev/ttyS1"
+    "port": "/dev/ttyS0"
 }

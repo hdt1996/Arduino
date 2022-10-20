@@ -80,6 +80,11 @@
                 Serial.println("Constructing MULTI Class...");
                 Template::Pointers::PointerUnit*  pointer_data = Template::Pointers::getNDimsbyType<ARG>();
                 pointer_data->test();
+                //Template::Pointers::PointerUnit*  pointer_data = Template::Pointers::getNDimsbyType<ARG>();
+                //pointer_data->extract();
+                //Serial.println("My struct data: ");
+                //typedef typename (*pointer_data).PUTYPE mytype;
+                //Serial.print((pointer_data->msg));
 
                 //Serial.println(Template::Arrays::isArray(test_ptr));
                 //BASE** tp1 = test_ptr;
