@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #ifndef DATATYPES
     #define DATATYPES
-    #include "checks.h"
-
+    #include "templates.h"
+    
     namespace Datatypes
     {
         extern const char* const_char_pstr ;
@@ -47,74 +47,6 @@
         char* toCharArray(const char * val);
         template <typename T>
         bool checkForString(T value);
-
-
-
-        namespace Container
-        {
-            class Unit
-            {
-                public:
-                    Unit(){};
-            };
-            template <typename BASE>
-            BASE* update(BASE new_value);
-
-            template <typename BASE>
-            char* update(const char* new_value);
-
-            template <typename BASE>
-            char* update(char* new_value);
-
-            template <typename BASE>
-            BASE* init(BASE value);
-
-            template <typename BASE>
-            char* init(const char* value);
-
-            template <typename BASE>
-            BASE value(BASE* val_ptr);
-
-            template <typename BASE, typename ARG>
-            class MULTI: public Unit
-            {
-                private:
-
-                    typedef typename Template::Arrays::add_pointer<ARG>::type vptr_type;
-                    
-                    vptr_type test_ptr;
-                    BASE* value_ptr;
-                    const char* type_ptr;
-                    unsigned int* dimensions;
-                    unsigned int num_dimensions;
-                public:
-                    MULTI(ARG value, const char* type_name = NULL, bool detect = false);
-                    MULTI(ARG value, const char* type_name = NULL, unsigned int num_dimensions = 1, ...);
-
-                    MULTI(){};
-                    void update(ARG new_value);
-                    char* valueToString();
-                    BASE* getPointer();
-                    BASE value();
-                    char* type();
-            };
-            template <typename ARG, typename BASE>
-            class SINGLE: public Unit
-            {
-                private:
-                    BASE* value_ptr;
-                    char* type_ptr;
-                public:
-                    SINGLE(ARG value);
-                    SINGLE(){};
-                    void update(ARG new_value);
-                    char* valueToString();
-                    BASE* getPointer();
-                    BASE value();
-                    char* type();
-            };
-        };
-
     };
     #include "datatypes.hpp"
 #endif
