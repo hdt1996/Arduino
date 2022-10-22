@@ -59,91 +59,10 @@
                 return *val_ptr;
             };
 
-            ///////////////////////////////////////////// MULTI value_ptr is POINTER TO ARRAY ///////////////////////////////////////////
-
-            template <typename BASE, typename ARG>
-            MULTI_ARRAY<BASE,ARG>::MULTI_ARRAY(ARG value, const char* type_name = NULL, bool = true) //Constructor for assigning pointer to array (passing array by value(of 1+ dimensions) or by reference)
-            {
-                if(num_dimensions == 0)
-                {
-                    Serial.println("Please pass in array with at least one dimension as first Constructor ARG!");
-                }
-                else
-                {
-                    Template::Structs::ArrayData* data = Template::Arrays::getArrayData(value);
-                    for(int i = 0; i < data->num_dimensions; i++)
-                    {
-                        dimensions[i] = data->dimensions[i];
-                    };
-                    data->prune(data);
-                    //value_ptr = Container::init(value); TODO, add template to assign values based on POINTER to array
-                };
-
-            };
-            template <typename BASE, typename ARG>
-            MULTI_ARRAY<BASE,ARG>::MULTI_ARRAY(ARG value, const char* type_name = NULL, ... ) //Constructor for pointers where dimensions must be assigned for proper heap allocation
-            {
-                Serial.println("MULTI-Type Pointer ------------ Constructing...");
-                //Array Section
-                
-                unsigned int num_dimensions  = Template::Arrays::getNDimsbyType<ARG>();
-                value_ptr = Container::init<BASE>(value);
-                if(type_name == NULL)
-                {
-                    type_ptr = Datatypes::get(value);
-                }
-                else
-                {
-                    type_ptr = new char [strlen(type_name)+1];
-                    strcpy(type_ptr, type_name);
-                }
-
-                dimensions = new unsigned int [num_dimensions];
-                va_list dims;
-                va_start(dims, num_dimensions);
-                unsigned int curr_dim;
-                for(unsigned int n = 0; n < num_dimensions; n++)
-                {   
-                    dimensions[n]=va_arg(dims, unsigned int);
-                };
-                va_end(dims);
-            };
-
-
-            template <typename BASE, typename ARG>
-            void MULTI_ARRAY<BASE,ARG>::update(ARG new_value)
-            {
-                free(value_ptr); 
-                value_ptr = Container::update<BASE>(new_value);
-            };
-
-            template <typename BASE, typename ARG>
-            char* MULTI_ARRAY<BASE,ARG>::valueToString()
-            {
-                return Datatypes::toCharArray(this->value());
-            };
-
-             template <typename BASE, typename ARG>
-            BASE* MULTI_ARRAY<BASE,ARG>::getPointer()
-            {
-                return value_ptr;
-            };
-            template <typename BASE, typename ARG>
-            BASE MULTI_ARRAY<BASE,ARG>::value()
-            {
-                return Container::value<BASE>(value_ptr);
-            };
-
-            template <typename BASE, typename ARG>
-            char* MULTI_ARRAY<BASE,ARG>::type()
-            {
-                return type_ptr;
-            };
-
             //////////////////////////////////// MULTI value_ptr is POINTER ///////////////////////////////////////////
 
             template <typename BASE, typename ARG, unsigned int ND>
-            MULTI_POINTER<BASE,ARG,ND>::MULTI_POINTER(ARG value, const char* type_name = NULL, bool = true) 
+            MULTI<BASE,ARG,ND>::MULTI(ARG value, const char* type_name = NULL, bool = true) 
             {
                 if(num_dimensions == 0)
                 {
@@ -155,6 +74,8 @@
                     for(int i = 0; i < data->num_dimensions; i++)
                     {
                         dimensions[i] = data->dimensions[i];
+                        Serial.println("Current DIM:");
+                        Serial.println(dimensions[i]);
                     };
                     data->prune(data);
                     Serial.println();
@@ -162,27 +83,31 @@
                     Template::Arrays::setPointer<heap_type, ARG>(&value_ptr, value, dimensions);
                     Serial.println();
                     Serial.println("Allocated and Set Values");
-                    Serial.print(value_ptr[0][0][0]);
+                    Serial.print(value_ptr[0][0][0][0]);
                     Serial.print(" ");
-                    Serial.print(value_ptr[0][0][1]);
+                    Serial.print(value_ptr[0][0][0][1]);
+                    Serial.print(" ");
+                    Serial.print(value_ptr[0][0][0][2]);
                     Serial.println();
-                    Serial.print(value_ptr[1][0][0]);
+
+                    Serial.print(value_ptr[1][0][0][0]);
                     Serial.print(" ");
-                    Serial.print(value_ptr[1][0][1]);
+                    Serial.print(value_ptr[1][0][0][1]);
+                    Serial.print(" ");
+                    Serial.print(value_ptr[1][0][0][2]);
                     Serial.println();
-                    Serial.print(value_ptr[2][0][0]);
+                    
+                    Serial.print(value_ptr[2][0][0][0]);
                     Serial.print(" ");
-                    Serial.print(value_ptr[2][0][1]);
-                    Serial.println();
-                    Serial.print(value_ptr[3][0][0]);
+                    Serial.print(value_ptr[2][0][0][1]);
                     Serial.print(" ");
-                    Serial.print(value_ptr[3][0][1]);
+                    Serial.print(value_ptr[2][0][0][2]);
                     Serial.println();
                 };
 
             };
             template <typename BASE, typename ARG, unsigned int ND>
-            MULTI_POINTER<BASE,ARG,ND>::MULTI_POINTER(ARG value, const char* type_name = NULL, ... ) 
+            MULTI<BASE,ARG,ND>::MULTI(ARG value, const char* type_name = NULL, ... ) 
             {
                 Serial.println("MULTI-Type Pointer ------------ Constructing...");
                 //Array Section
@@ -212,31 +137,31 @@
             };
 
             template <typename BASE, typename ARG, unsigned int ND>
-            void MULTI_POINTER<BASE,ARG,ND>::update(ARG new_value)
+            void MULTI<BASE,ARG,ND>::update(ARG new_value)
             {
                 free(value_ptr); 
                 value_ptr = Container::update<BASE>(new_value);
             };
 
             template <typename BASE, typename ARG, unsigned int ND>
-            char* MULTI_POINTER<BASE,ARG,ND>::valueToString()
+            char* MULTI<BASE,ARG,ND>::valueToString()
             {
                 return Datatypes::toCharArray(this->value());
             };
 
              template <typename BASE, typename ARG, unsigned int ND>
-            BASE* MULTI_POINTER<BASE,ARG,ND>::getPointer()
+            BASE* MULTI<BASE,ARG,ND>::getPointer()
             {
                 return value_ptr;
             };
             template <typename BASE, typename ARG, unsigned int ND>
-            BASE MULTI_POINTER<BASE,ARG,ND>::value()
+            BASE MULTI<BASE,ARG,ND>::value()
             {
                 return Container::value<BASE>(value_ptr);
             };
 
             template <typename BASE, typename ARG, unsigned int ND>
-            char* MULTI_POINTER<BASE,ARG,ND>::type()
+            char* MULTI<BASE,ARG,ND>::type()
             {
                 return type_ptr;
             };

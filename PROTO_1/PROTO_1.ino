@@ -48,17 +48,18 @@ void setup(){
 
   double test_data[4][1][2]={{{11.0,1.0}},{{22.0,2.0}},{{33.0,3.0}},{{44.0,4.0}}};
   Serial.println(getFreeMemory());
-  Template::Structs::ArrayData* data = Template::Arrays::getArrayData(&test_data);
-  Serial.println(data->num_dimensions);
-  data->printDimensions();
-  data->prune(data);
+  //Template::Structs::ArrayData* data = Template::Arrays::getArrayData(&test_data);
+  //Serial.println(data->num_dimensions);
+  //data->printDimensions();
+  //data->prune(data);
   Serial.println();
   Serial.println(getFreeMemory());
   Serial.println();  
-  test(&test_data);
+  //test(&test_data);
 
   double test_data2[2] = {1.0,1.0};  
-  Container::MULTI_POINTER<double,double(*)[4][1][2],3> test_container2(&test_data, "double", true);
+  double test_data3[3][2][2][3]={{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}},{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}},{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}}};
+  Container::MULTI<double,double(*)[3][2][2][3],4> test_container2(&test_data3, "double", true);
 }
 
 int freq = 2000;

@@ -50,7 +50,7 @@
 
             template<typename T>
             void inputDims(T* arg, Structs::ArrayData* data, unsigned int prev_size, unsigned int i = 0);
-
+            
             template<typename T>
             Structs::ArrayData* getArrayData(T args);
 

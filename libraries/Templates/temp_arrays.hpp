@@ -90,42 +90,32 @@
             template<typename T>
             void inputDims(T arg, Structs::ArrayData* data, unsigned int prev_size, unsigned int i = 0)
             {
-                Serial.println("Default\n\n\n");
                 return;
             };
-
             template<typename T>
-            void inputDims(T* arg, Structs::ArrayData* data, unsigned int prev_size, unsigned int i = 0)
+            void inputDims(T* arg, Structs::ArrayData* data, unsigned int prev_size, unsigned int i = 0) //double(*)[3][3] T = 
             {
                 unsigned int curr_size;
-                if(isArray(arg))
-                {
-                    Serial.print("Current size: ");
-                    curr_size = sizeof(*arg);
-                    unsigned int dim_size = prev_size/curr_size;
-                    Serial.print(dim_size);
-                    Serial.println();
-                    data->dimensions[i] = dim_size;
-                    i++;
-                    return inputDims(*arg, data, curr_size, i);
-                };
-                curr_size =  sizeof(arg);
-                data->dimensions[i] = curr_size;
-                Serial.print("Last Level Size: ");
-                Serial.print(curr_size);
-                Serial.println();
+                unsigned int dim_size;
+                curr_size = sizeof(*arg);
+                dim_size = prev_size/curr_size;
+                data->dimensions[i] = dim_size;
+                i++;
+                return inputDims(*arg, data, curr_size, i); //double[3][3] -> double(*)[3]                       //double(*)[3] -> double (*)
             };
 
             template<typename T>
             Structs::ArrayData* getArrayData(T args)
             {
-                unsigned int num_dimensions = getNDims(args);
+                unsigned int num_dimensions = getNDims(args); //double(*)[3][3][3]
+                Serial.println("Num Dimensions ......................");
+                Serial.println(num_dimensions);
                 if(num_dimensions > 0)
                 {
                     Structs::ArrayData* data = new Structs::ArrayData;
                     data -> num_dimensions = num_dimensions;
                     data->dimensions = new unsigned int [num_dimensions];
-                    inputDims(*args,data,sizeof(*args));
+                    inputDims(*args,data,sizeof(*args)); //double[3][3][3] -> double(*)[3][3]
                     return data;
                 };
                 return NULL;
@@ -162,6 +152,7 @@
             void setPointer(double* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
             {
                 // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+                Serial.println(prev);
                 for(int d = 0; d < prev; d++)
                 {
                     Serial.print("Assigning Value: ");
