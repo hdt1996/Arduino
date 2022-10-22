@@ -10,4 +10,5 @@ pypip_pkgs/
 *.deb
 *.h5
 *.exe
+/.utils/templates/output
 
