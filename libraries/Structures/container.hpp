@@ -64,39 +64,49 @@
             template <typename BASE, typename ARG>
             MULTI_ARRAY<BASE,ARG>::MULTI_ARRAY(ARG value, const char* type_name = NULL, bool = true) //Constructor for assigning pointer to array (passing array by value(of 1+ dimensions) or by reference)
             {
-                Serial.println("MULTI-Type Array ------------ Constructing...");
-                Serial.print("Num_Dimensions Size: ");
-                Serial.print(num_dimensions);
-                Serial.println();
+                if(num_dimensions == 0)
+                {
+                    Serial.println("Please pass in array with at least one dimension as first Constructor ARG!");
+                }
+                else
+                {
+                    Template::Structs::ArrayData* data = Template::Arrays::getArrayData(value);
+                    for(int i = 0; i < data->num_dimensions; i++)
+                    {
+                        dimensions[i] = data->dimensions[i];
+                    };
+                    data->prune(data);
+                    //value_ptr = Container::init(value); TODO, add template to assign values based on POINTER to array
+                };
+
             };
             template <typename BASE, typename ARG>
             MULTI_ARRAY<BASE,ARG>::MULTI_ARRAY(ARG value, const char* type_name = NULL, ... ) //Constructor for pointers where dimensions must be assigned for proper heap allocation
             {
                 Serial.println("MULTI-Type Pointer ------------ Constructing...");
                 //Array Section
-                /*
-                    unsigned int num_dimensions  = Template::Arrays::getNDimsbyType<ARG>();
-                    value_ptr = Container::init<BASE>(value);
-                    if(type_name == NULL)
-                    {
-                        type_ptr = Datatypes::get(value);
-                    }
-                    else
-                    {
-                        type_ptr = new char [strlen(type_name)+1];
-                        strcpy(type_ptr, type_name);
-                    }
+                
+                unsigned int num_dimensions  = Template::Arrays::getNDimsbyType<ARG>();
+                value_ptr = Container::init<BASE>(value);
+                if(type_name == NULL)
+                {
+                    type_ptr = Datatypes::get(value);
+                }
+                else
+                {
+                    type_ptr = new char [strlen(type_name)+1];
+                    strcpy(type_ptr, type_name);
+                }
 
-                    dimensions = new unsigned int [num_dimensions];
-                    va_list dims;
-                    va_start(dims, num_dimensions);
-                    unsigned int curr_dim;
-                    for(unsigned int n = 0; n < num_dimensions; n++)
-                    {   
-                        dimensions[n]=va_arg(dims, unsigned int);
-                    };
-                    va_end(dims);
-                */
+                dimensions = new unsigned int [num_dimensions];
+                va_list dims;
+                va_start(dims, num_dimensions);
+                unsigned int curr_dim;
+                for(unsigned int n = 0; n < num_dimensions; n++)
+                {   
+                    dimensions[n]=va_arg(dims, unsigned int);
+                };
+                va_end(dims);
             };
 
 
@@ -168,7 +178,7 @@
                     Serial.print(" ");
                     Serial.print(value_ptr[3][0][1]);
                     Serial.println();
-                }
+                };
 
             };
             template <typename BASE, typename ARG, unsigned int ND>
