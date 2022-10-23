@@ -6,519 +6,519 @@ namespace Template
 	namespace Modify
 	{
 		template<typename T, unsigned int N>
-		struct makePointer{typedef T type;};
+		struct addNPointers{typedef T type;};
 		template<typename T>
-		struct makePointer<T,1>{typedef T* type;};
+		struct addNPointers<T,1>{typedef T* type;};
 		template<typename T>
-		struct makePointer<T,2>{typedef T** type;};
+		struct addNPointers<T,2>{typedef T** type;};
 		template<typename T>
-		struct makePointer<T,3>{typedef T*** type;};
+		struct addNPointers<T,3>{typedef T*** type;};
 		template<typename T>
-		struct makePointer<T,4>{typedef T**** type;};
+		struct addNPointers<T,4>{typedef T**** type;};
 		template<typename T>
-		struct makePointer<T,5>{typedef T***** type;};
+		struct addNPointers<T,5>{typedef T***** type;};
 		template<typename T>
-		struct makePointer<T,6>{typedef T****** type;};
+		struct addNPointers<T,6>{typedef T****** type;};
 		template<typename T>
-		struct makePointer<T,7>{typedef T******* type;};
+		struct addNPointers<T,7>{typedef T******* type;};
 		template<typename T>
-		struct makePointer<T,8>{typedef T******** type;};
+		struct addNPointers<T,8>{typedef T******** type;};
 		template<typename T>
-		struct makePointer<T,9>{typedef T********* type;};
+		struct addNPointers<T,9>{typedef T********* type;};
 		template<typename T>
-		struct makePointer<T,10>{typedef T********** type;};
+		struct addNPointers<T,10>{typedef T********** type;};
 		template<typename T>
-		struct makePointer<T,11>{typedef T*********** type;};
+		struct addNPointers<T,11>{typedef T*********** type;};
 		template<typename T>
-		struct makePointer<T,12>{typedef T************ type;};
+		struct addNPointers<T,12>{typedef T************ type;};
 		template<typename T>
-		struct makePointer<T,13>{typedef T************* type;};
+		struct addNPointers<T,13>{typedef T************* type;};
 		template<typename T>
-		struct makePointer<T,14>{typedef T************** type;};
+		struct addNPointers<T,14>{typedef T************** type;};
 		template<typename T>
-		struct makePointer<T,15>{typedef T*************** type;};
+		struct addNPointers<T,15>{typedef T*************** type;};
 		template<typename T>
-		struct makePointer<T,16>{typedef T**************** type;};
+		struct addNPointers<T,16>{typedef T**************** type;};
 		template<typename T>
-		struct makePointer<T,17>{typedef T***************** type;};
+		struct addNPointers<T,17>{typedef T***************** type;};
 		template<typename T>
-		struct makePointer<T,18>{typedef T****************** type;};
+		struct addNPointers<T,18>{typedef T****************** type;};
 		template<typename T>
-		struct makePointer<T,19>{typedef T******************* type;};
+		struct addNPointers<T,19>{typedef T******************* type;};
 		template<typename T>
-		struct makePointer<T,20>{typedef T******************** type;};
+		struct addNPointers<T,20>{typedef T******************** type;};
 		template<typename T>
-		struct makePointer<T,21>{typedef T********************* type;};
+		struct addNPointers<T,21>{typedef T********************* type;};
 		template<typename T>
-		struct makePointer<T,22>{typedef T********************** type;};
+		struct addNPointers<T,22>{typedef T********************** type;};
 		template<typename T>
-		struct makePointer<T,23>{typedef T*********************** type;};
+		struct addNPointers<T,23>{typedef T*********************** type;};
 		template<typename T>
-		struct makePointer<T,24>{typedef T************************ type;};
+		struct addNPointers<T,24>{typedef T************************ type;};
 		template<typename T>
-		struct makePointer<T,25>{typedef T************************* type;};
+		struct addNPointers<T,25>{typedef T************************* type;};
 		template<typename T>
-		struct makePointer<T,26>{typedef T************************** type;};
+		struct addNPointers<T,26>{typedef T************************** type;};
 		template<typename T>
-		struct makePointer<T,27>{typedef T*************************** type;};
+		struct addNPointers<T,27>{typedef T*************************** type;};
 		template<typename T>
-		struct makePointer<T,28>{typedef T**************************** type;};
+		struct addNPointers<T,28>{typedef T**************************** type;};
 		template<typename T>
-		struct makePointer<T,29>{typedef T***************************** type;};
+		struct addNPointers<T,29>{typedef T***************************** type;};
 		template<typename T>
-		struct makePointer<T,30>{typedef T****************************** type;};
+		struct addNPointers<T,30>{typedef T****************************** type;};
 		template<typename T>
-		struct makePointer<T,31>{typedef T******************************* type;};
+		struct addNPointers<T,31>{typedef T******************************* type;};
 		template<typename T>
-		struct makePointer<T,32>{typedef T******************************** type;};
+		struct addNPointers<T,32>{typedef T******************************** type;};
 		template<typename T>
-		struct makePointer<T,33>{typedef T********************************* type;};
+		struct addNPointers<T,33>{typedef T********************************* type;};
 		template<typename T>
-		struct makePointer<T,34>{typedef T********************************** type;};
+		struct addNPointers<T,34>{typedef T********************************** type;};
 		template<typename T>
-		struct makePointer<T,35>{typedef T*********************************** type;};
+		struct addNPointers<T,35>{typedef T*********************************** type;};
 		template<typename T>
-		struct makePointer<T,36>{typedef T************************************ type;};
+		struct addNPointers<T,36>{typedef T************************************ type;};
 		template<typename T>
-		struct makePointer<T,37>{typedef T************************************* type;};
+		struct addNPointers<T,37>{typedef T************************************* type;};
 		template<typename T>
-		struct makePointer<T,38>{typedef T************************************** type;};
+		struct addNPointers<T,38>{typedef T************************************** type;};
 		template<typename T>
-		struct makePointer<T,39>{typedef T*************************************** type;};
+		struct addNPointers<T,39>{typedef T*************************************** type;};
 		template<typename T>
-		struct makePointer<T,40>{typedef T**************************************** type;};
+		struct addNPointers<T,40>{typedef T**************************************** type;};
 		template<typename T>
-		struct makePointer<T,41>{typedef T***************************************** type;};
+		struct addNPointers<T,41>{typedef T***************************************** type;};
 		template<typename T>
-		struct makePointer<T,42>{typedef T****************************************** type;};
+		struct addNPointers<T,42>{typedef T****************************************** type;};
 		template<typename T>
-		struct makePointer<T,43>{typedef T******************************************* type;};
+		struct addNPointers<T,43>{typedef T******************************************* type;};
 		template<typename T>
-		struct makePointer<T,44>{typedef T******************************************** type;};
+		struct addNPointers<T,44>{typedef T******************************************** type;};
 		template<typename T>
-		struct makePointer<T,45>{typedef T********************************************* type;};
+		struct addNPointers<T,45>{typedef T********************************************* type;};
 		template<typename T>
-		struct makePointer<T,46>{typedef T********************************************** type;};
+		struct addNPointers<T,46>{typedef T********************************************** type;};
 		template<typename T>
-		struct makePointer<T,47>{typedef T*********************************************** type;};
+		struct addNPointers<T,47>{typedef T*********************************************** type;};
 		template<typename T>
-		struct makePointer<T,48>{typedef T************************************************ type;};
+		struct addNPointers<T,48>{typedef T************************************************ type;};
 		template<typename T>
-		struct makePointer<T,49>{typedef T************************************************* type;};
+		struct addNPointers<T,49>{typedef T************************************************* type;};
 		template<typename T>
-		struct makePointer<T,50>{typedef T************************************************** type;};
+		struct addNPointers<T,50>{typedef T************************************************** type;};
 		template<typename T>
-		struct makePointer<T,51>{typedef T*************************************************** type;};
+		struct addNPointers<T,51>{typedef T*************************************************** type;};
 		template<typename T>
-		struct makePointer<T,52>{typedef T**************************************************** type;};
+		struct addNPointers<T,52>{typedef T**************************************************** type;};
 		template<typename T>
-		struct makePointer<T,53>{typedef T***************************************************** type;};
+		struct addNPointers<T,53>{typedef T***************************************************** type;};
 		template<typename T>
-		struct makePointer<T,54>{typedef T****************************************************** type;};
+		struct addNPointers<T,54>{typedef T****************************************************** type;};
 		template<typename T>
-		struct makePointer<T,55>{typedef T******************************************************* type;};
+		struct addNPointers<T,55>{typedef T******************************************************* type;};
 		template<typename T>
-		struct makePointer<T,56>{typedef T******************************************************** type;};
+		struct addNPointers<T,56>{typedef T******************************************************** type;};
 		template<typename T>
-		struct makePointer<T,57>{typedef T********************************************************* type;};
+		struct addNPointers<T,57>{typedef T********************************************************* type;};
 		template<typename T>
-		struct makePointer<T,58>{typedef T********************************************************** type;};
+		struct addNPointers<T,58>{typedef T********************************************************** type;};
 		template<typename T>
-		struct makePointer<T,59>{typedef T*********************************************************** type;};
+		struct addNPointers<T,59>{typedef T*********************************************************** type;};
 		template<typename T>
-		struct makePointer<T,60>{typedef T************************************************************ type;};
+		struct addNPointers<T,60>{typedef T************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,61>{typedef T************************************************************* type;};
+		struct addNPointers<T,61>{typedef T************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,62>{typedef T************************************************************** type;};
+		struct addNPointers<T,62>{typedef T************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,63>{typedef T*************************************************************** type;};
+		struct addNPointers<T,63>{typedef T*************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,64>{typedef T**************************************************************** type;};
+		struct addNPointers<T,64>{typedef T**************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,65>{typedef T***************************************************************** type;};
+		struct addNPointers<T,65>{typedef T***************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,66>{typedef T****************************************************************** type;};
+		struct addNPointers<T,66>{typedef T****************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,67>{typedef T******************************************************************* type;};
+		struct addNPointers<T,67>{typedef T******************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,68>{typedef T******************************************************************** type;};
+		struct addNPointers<T,68>{typedef T******************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,69>{typedef T********************************************************************* type;};
+		struct addNPointers<T,69>{typedef T********************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,70>{typedef T********************************************************************** type;};
+		struct addNPointers<T,70>{typedef T********************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,71>{typedef T*********************************************************************** type;};
+		struct addNPointers<T,71>{typedef T*********************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,72>{typedef T************************************************************************ type;};
+		struct addNPointers<T,72>{typedef T************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,73>{typedef T************************************************************************* type;};
+		struct addNPointers<T,73>{typedef T************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,74>{typedef T************************************************************************** type;};
+		struct addNPointers<T,74>{typedef T************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,75>{typedef T*************************************************************************** type;};
+		struct addNPointers<T,75>{typedef T*************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,76>{typedef T**************************************************************************** type;};
+		struct addNPointers<T,76>{typedef T**************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,77>{typedef T***************************************************************************** type;};
+		struct addNPointers<T,77>{typedef T***************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,78>{typedef T****************************************************************************** type;};
+		struct addNPointers<T,78>{typedef T****************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,79>{typedef T******************************************************************************* type;};
+		struct addNPointers<T,79>{typedef T******************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,80>{typedef T******************************************************************************** type;};
+		struct addNPointers<T,80>{typedef T******************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,81>{typedef T********************************************************************************* type;};
+		struct addNPointers<T,81>{typedef T********************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,82>{typedef T********************************************************************************** type;};
+		struct addNPointers<T,82>{typedef T********************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,83>{typedef T*********************************************************************************** type;};
+		struct addNPointers<T,83>{typedef T*********************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,84>{typedef T************************************************************************************ type;};
+		struct addNPointers<T,84>{typedef T************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,85>{typedef T************************************************************************************* type;};
+		struct addNPointers<T,85>{typedef T************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,86>{typedef T************************************************************************************** type;};
+		struct addNPointers<T,86>{typedef T************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,87>{typedef T*************************************************************************************** type;};
+		struct addNPointers<T,87>{typedef T*************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,88>{typedef T**************************************************************************************** type;};
+		struct addNPointers<T,88>{typedef T**************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,89>{typedef T***************************************************************************************** type;};
+		struct addNPointers<T,89>{typedef T***************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,90>{typedef T****************************************************************************************** type;};
+		struct addNPointers<T,90>{typedef T****************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,91>{typedef T******************************************************************************************* type;};
+		struct addNPointers<T,91>{typedef T******************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,92>{typedef T******************************************************************************************** type;};
+		struct addNPointers<T,92>{typedef T******************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,93>{typedef T********************************************************************************************* type;};
+		struct addNPointers<T,93>{typedef T********************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,94>{typedef T********************************************************************************************** type;};
+		struct addNPointers<T,94>{typedef T********************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,95>{typedef T*********************************************************************************************** type;};
+		struct addNPointers<T,95>{typedef T*********************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,96>{typedef T************************************************************************************************ type;};
+		struct addNPointers<T,96>{typedef T************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,97>{typedef T************************************************************************************************* type;};
+		struct addNPointers<T,97>{typedef T************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,98>{typedef T************************************************************************************************** type;};
+		struct addNPointers<T,98>{typedef T************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,99>{typedef T*************************************************************************************************** type;};
+		struct addNPointers<T,99>{typedef T*************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,100>{typedef T**************************************************************************************************** type;};
+		struct addNPointers<T,100>{typedef T**************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,101>{typedef T***************************************************************************************************** type;};
+		struct addNPointers<T,101>{typedef T***************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,102>{typedef T****************************************************************************************************** type;};
+		struct addNPointers<T,102>{typedef T****************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,103>{typedef T******************************************************************************************************* type;};
+		struct addNPointers<T,103>{typedef T******************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,104>{typedef T******************************************************************************************************** type;};
+		struct addNPointers<T,104>{typedef T******************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,105>{typedef T********************************************************************************************************* type;};
+		struct addNPointers<T,105>{typedef T********************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,106>{typedef T********************************************************************************************************** type;};
+		struct addNPointers<T,106>{typedef T********************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,107>{typedef T*********************************************************************************************************** type;};
+		struct addNPointers<T,107>{typedef T*********************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,108>{typedef T************************************************************************************************************ type;};
+		struct addNPointers<T,108>{typedef T************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,109>{typedef T************************************************************************************************************* type;};
+		struct addNPointers<T,109>{typedef T************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,110>{typedef T************************************************************************************************************** type;};
+		struct addNPointers<T,110>{typedef T************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,111>{typedef T*************************************************************************************************************** type;};
+		struct addNPointers<T,111>{typedef T*************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,112>{typedef T**************************************************************************************************************** type;};
+		struct addNPointers<T,112>{typedef T**************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,113>{typedef T***************************************************************************************************************** type;};
+		struct addNPointers<T,113>{typedef T***************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,114>{typedef T****************************************************************************************************************** type;};
+		struct addNPointers<T,114>{typedef T****************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,115>{typedef T******************************************************************************************************************* type;};
+		struct addNPointers<T,115>{typedef T******************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,116>{typedef T******************************************************************************************************************** type;};
+		struct addNPointers<T,116>{typedef T******************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,117>{typedef T********************************************************************************************************************* type;};
+		struct addNPointers<T,117>{typedef T********************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,118>{typedef T********************************************************************************************************************** type;};
+		struct addNPointers<T,118>{typedef T********************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,119>{typedef T*********************************************************************************************************************** type;};
+		struct addNPointers<T,119>{typedef T*********************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,120>{typedef T************************************************************************************************************************ type;};
+		struct addNPointers<T,120>{typedef T************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,121>{typedef T************************************************************************************************************************* type;};
+		struct addNPointers<T,121>{typedef T************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,122>{typedef T************************************************************************************************************************** type;};
+		struct addNPointers<T,122>{typedef T************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,123>{typedef T*************************************************************************************************************************** type;};
+		struct addNPointers<T,123>{typedef T*************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,124>{typedef T**************************************************************************************************************************** type;};
+		struct addNPointers<T,124>{typedef T**************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,125>{typedef T***************************************************************************************************************************** type;};
+		struct addNPointers<T,125>{typedef T***************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,126>{typedef T****************************************************************************************************************************** type;};
+		struct addNPointers<T,126>{typedef T****************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,127>{typedef T******************************************************************************************************************************* type;};
+		struct addNPointers<T,127>{typedef T******************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,128>{typedef T******************************************************************************************************************************** type;};
+		struct addNPointers<T,128>{typedef T******************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,129>{typedef T********************************************************************************************************************************* type;};
+		struct addNPointers<T,129>{typedef T********************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,130>{typedef T********************************************************************************************************************************** type;};
+		struct addNPointers<T,130>{typedef T********************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,131>{typedef T*********************************************************************************************************************************** type;};
+		struct addNPointers<T,131>{typedef T*********************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,132>{typedef T************************************************************************************************************************************ type;};
+		struct addNPointers<T,132>{typedef T************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,133>{typedef T************************************************************************************************************************************* type;};
+		struct addNPointers<T,133>{typedef T************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,134>{typedef T************************************************************************************************************************************** type;};
+		struct addNPointers<T,134>{typedef T************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,135>{typedef T*************************************************************************************************************************************** type;};
+		struct addNPointers<T,135>{typedef T*************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,136>{typedef T**************************************************************************************************************************************** type;};
+		struct addNPointers<T,136>{typedef T**************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,137>{typedef T***************************************************************************************************************************************** type;};
+		struct addNPointers<T,137>{typedef T***************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,138>{typedef T****************************************************************************************************************************************** type;};
+		struct addNPointers<T,138>{typedef T****************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,139>{typedef T******************************************************************************************************************************************* type;};
+		struct addNPointers<T,139>{typedef T******************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,140>{typedef T******************************************************************************************************************************************** type;};
+		struct addNPointers<T,140>{typedef T******************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,141>{typedef T********************************************************************************************************************************************* type;};
+		struct addNPointers<T,141>{typedef T********************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,142>{typedef T********************************************************************************************************************************************** type;};
+		struct addNPointers<T,142>{typedef T********************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,143>{typedef T*********************************************************************************************************************************************** type;};
+		struct addNPointers<T,143>{typedef T*********************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,144>{typedef T************************************************************************************************************************************************ type;};
+		struct addNPointers<T,144>{typedef T************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,145>{typedef T************************************************************************************************************************************************* type;};
+		struct addNPointers<T,145>{typedef T************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,146>{typedef T************************************************************************************************************************************************** type;};
+		struct addNPointers<T,146>{typedef T************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,147>{typedef T*************************************************************************************************************************************************** type;};
+		struct addNPointers<T,147>{typedef T*************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,148>{typedef T**************************************************************************************************************************************************** type;};
+		struct addNPointers<T,148>{typedef T**************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,149>{typedef T***************************************************************************************************************************************************** type;};
+		struct addNPointers<T,149>{typedef T***************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,150>{typedef T****************************************************************************************************************************************************** type;};
+		struct addNPointers<T,150>{typedef T****************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,151>{typedef T******************************************************************************************************************************************************* type;};
+		struct addNPointers<T,151>{typedef T******************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,152>{typedef T******************************************************************************************************************************************************** type;};
+		struct addNPointers<T,152>{typedef T******************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,153>{typedef T********************************************************************************************************************************************************* type;};
+		struct addNPointers<T,153>{typedef T********************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,154>{typedef T********************************************************************************************************************************************************** type;};
+		struct addNPointers<T,154>{typedef T********************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,155>{typedef T*********************************************************************************************************************************************************** type;};
+		struct addNPointers<T,155>{typedef T*********************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,156>{typedef T************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,156>{typedef T************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,157>{typedef T************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,157>{typedef T************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,158>{typedef T************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,158>{typedef T************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,159>{typedef T*************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,159>{typedef T*************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,160>{typedef T**************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,160>{typedef T**************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,161>{typedef T***************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,161>{typedef T***************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,162>{typedef T****************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,162>{typedef T****************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,163>{typedef T******************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,163>{typedef T******************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,164>{typedef T******************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,164>{typedef T******************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,165>{typedef T********************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,165>{typedef T********************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,166>{typedef T********************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,166>{typedef T********************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,167>{typedef T*********************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,167>{typedef T*********************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,168>{typedef T************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,168>{typedef T************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,169>{typedef T************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,169>{typedef T************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,170>{typedef T************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,170>{typedef T************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,171>{typedef T*************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,171>{typedef T*************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,172>{typedef T**************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,172>{typedef T**************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,173>{typedef T***************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,173>{typedef T***************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,174>{typedef T****************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,174>{typedef T****************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,175>{typedef T******************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,175>{typedef T******************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,176>{typedef T******************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,176>{typedef T******************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,177>{typedef T********************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,177>{typedef T********************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,178>{typedef T********************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,178>{typedef T********************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,179>{typedef T*********************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,179>{typedef T*********************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,180>{typedef T************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,180>{typedef T************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,181>{typedef T************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,181>{typedef T************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,182>{typedef T************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,182>{typedef T************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,183>{typedef T*************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,183>{typedef T*************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,184>{typedef T**************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,184>{typedef T**************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,185>{typedef T***************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,185>{typedef T***************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,186>{typedef T****************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,186>{typedef T****************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,187>{typedef T******************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,187>{typedef T******************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,188>{typedef T******************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,188>{typedef T******************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,189>{typedef T********************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,189>{typedef T********************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,190>{typedef T********************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,190>{typedef T********************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,191>{typedef T*********************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,191>{typedef T*********************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,192>{typedef T************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,192>{typedef T************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,193>{typedef T************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,193>{typedef T************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,194>{typedef T************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,194>{typedef T************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,195>{typedef T*************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,195>{typedef T*************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,196>{typedef T**************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,196>{typedef T**************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,197>{typedef T***************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,197>{typedef T***************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,198>{typedef T****************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,198>{typedef T****************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,199>{typedef T******************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,199>{typedef T******************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,200>{typedef T******************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,200>{typedef T******************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,201>{typedef T********************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,201>{typedef T********************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,202>{typedef T********************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,202>{typedef T********************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,203>{typedef T*********************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,203>{typedef T*********************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,204>{typedef T************************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,204>{typedef T************************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,205>{typedef T************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,205>{typedef T************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,206>{typedef T************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,206>{typedef T************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,207>{typedef T*************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,207>{typedef T*************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,208>{typedef T**************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,208>{typedef T**************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,209>{typedef T***************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,209>{typedef T***************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,210>{typedef T****************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,210>{typedef T****************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,211>{typedef T******************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,211>{typedef T******************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,212>{typedef T******************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,212>{typedef T******************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,213>{typedef T********************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,213>{typedef T********************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,214>{typedef T********************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,214>{typedef T********************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,215>{typedef T*********************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,215>{typedef T*********************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,216>{typedef T************************************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,216>{typedef T************************************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,217>{typedef T************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,217>{typedef T************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,218>{typedef T************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,218>{typedef T************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,219>{typedef T*************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,219>{typedef T*************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,220>{typedef T**************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,220>{typedef T**************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,221>{typedef T***************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,221>{typedef T***************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,222>{typedef T****************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,222>{typedef T****************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,223>{typedef T******************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,223>{typedef T******************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,224>{typedef T******************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,224>{typedef T******************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,225>{typedef T********************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,225>{typedef T********************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,226>{typedef T********************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,226>{typedef T********************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,227>{typedef T*********************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,227>{typedef T*********************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,228>{typedef T************************************************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,228>{typedef T************************************************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,229>{typedef T************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,229>{typedef T************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,230>{typedef T************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,230>{typedef T************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,231>{typedef T*************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,231>{typedef T*************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,232>{typedef T**************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,232>{typedef T**************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,233>{typedef T***************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,233>{typedef T***************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,234>{typedef T****************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,234>{typedef T****************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,235>{typedef T******************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,235>{typedef T******************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,236>{typedef T******************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,236>{typedef T******************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,237>{typedef T********************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,237>{typedef T********************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,238>{typedef T********************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,238>{typedef T********************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,239>{typedef T*********************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,239>{typedef T*********************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,240>{typedef T************************************************************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,240>{typedef T************************************************************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,241>{typedef T************************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,241>{typedef T************************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,242>{typedef T************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,242>{typedef T************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,243>{typedef T*************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,243>{typedef T*************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,244>{typedef T**************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,244>{typedef T**************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,245>{typedef T***************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,245>{typedef T***************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,246>{typedef T****************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,246>{typedef T****************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,247>{typedef T******************************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,247>{typedef T******************************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,248>{typedef T******************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,248>{typedef T******************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,249>{typedef T********************************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,249>{typedef T********************************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,250>{typedef T********************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,250>{typedef T********************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,251>{typedef T*********************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,251>{typedef T*********************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,252>{typedef T************************************************************************************************************************************************************************************************************************************************************ type;};
+		struct addNPointers<T,252>{typedef T************************************************************************************************************************************************************************************************************************************************************ type;};
 		template<typename T>
-		struct makePointer<T,253>{typedef T************************************************************************************************************************************************************************************************************************************************************* type;};
+		struct addNPointers<T,253>{typedef T************************************************************************************************************************************************************************************************************************************************************* type;};
 		template<typename T>
-		struct makePointer<T,254>{typedef T************************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,254>{typedef T************************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,255>{typedef T*************************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,255>{typedef T*************************************************************************************************************************************************************************************************************************************************************** type;};
 		template<typename T>
-		struct makePointer<T,256>{typedef T**************************************************************************************************************************************************************************************************************************************************************** type;};
+		struct addNPointers<T,256>{typedef T**************************************************************************************************************************************************************************************************************************************************************** type;};
 	};
 }
 #endif

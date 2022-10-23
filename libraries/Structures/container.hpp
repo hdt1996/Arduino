@@ -3,7 +3,6 @@
     #define CONTAINER_HPP
         #include "datatypes.h"
         #include "templates.h"
-        #include "container.h"
         namespace Container
         {
             ///////////////////////////////// Container template functions ///////////////////////////////////
@@ -30,7 +29,7 @@
             };
 
             template<typename BASE>
-            BASE* init(BASE value)
+            BASE* assignValue(BASE value)
             {
                 BASE* val_ptr = new BASE;
                 *val_ptr = value;
@@ -38,7 +37,7 @@
             };
 
             template<typename BASE>
-            char* init(const char* value)
+            char* assignValue(const char* value)
             {
                 char* val_ptr = new char [strlen(value)+1];
                 strcpy(val_ptr, value);
@@ -46,13 +45,13 @@
             };
 
             template<typename BASE>
-            char* init(char* value)
+            char* assignValue(char* value)
             {
                 char* val_ptr = new char [strlen(value)+1];
                 strcpy(val_ptr, value);
                 return val_ptr;
             };
-            
+
             template <typename BASE>
             BASE value(BASE* val_ptr)
             {
@@ -74,66 +73,39 @@
                     for(int i = 0; i < data->num_dimensions; i++)
                     {
                         dimensions[i] = data->dimensions[i];
-                        Serial.println("Current DIM:");
-                        Serial.println(dimensions[i]);
                     };
                     data->prune(data);
-                    Serial.println();
-                    Template::Arrays::allocPointer<heap_type>(&value_ptr, dimensions);
-                    Template::Arrays::setPointer<heap_type, ARG>(&value_ptr, value, dimensions);
-                    Serial.println();
-                    Serial.println("Allocated and Set Values");
-                    Serial.print(value_ptr[0][0][0][0]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[0][0][0][1]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[0][0][0][2]);
-                    Serial.println();
-
-                    Serial.print(value_ptr[1][0][0][0]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[1][0][0][1]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[1][0][0][2]);
-                    Serial.println();
-                    
-                    Serial.print(value_ptr[2][0][0][0]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[2][0][0][1]);
-                    Serial.print(" ");
-                    Serial.print(value_ptr[2][0][0][2]);
-                    Serial.println();
+                    Template::Arrays::allocPointers<heap_type>(&value_ptr, dimensions);
+                    Serial.println(Template::Arrays::alloc_pointers);
+                    Template::Arrays::alloc_pointers = 0;
+                    Template::Arrays::setPointers<heap_type, ARG>(&value_ptr, value, dimensions);
                 };
-
             };
+
             template <typename BASE, typename ARG, unsigned int ND>
             MULTI<BASE,ARG,ND>::MULTI(ARG value, const char* type_name = NULL, ... ) 
-            {
-                Serial.println("MULTI-Type Pointer ------------ Constructing...");
-                //Array Section
-                /*
-                    unsigned int num_dimensions  = Template::Arrays::getNDimsbyType<ARG>();
-                    value_ptr = Container::init<BASE>(value);
-                    if(type_name == NULL)
-                    {
-                        type_ptr = Datatypes::get(value);
-                    }
-                    else
-                    {
-                        type_ptr = new char [strlen(type_name)+1];
-                        strcpy(type_ptr, type_name);
-                    }
+            {                
+                unsigned int val_dimensions  = Template::Arrays::getNDimsbyType<ARG>();
+                value_ptr = Container::assignValue<BASE>(value);
+                if(type_name == NULL)
+                {
+                    type_ptr = Datatypes::get(value);
+                }
+                else
+                {
+                    type_ptr = new char [strlen(type_name)+1];
+                    strcpy(type_ptr, type_name);
+                }
 
-                    dimensions = new unsigned int [num_dimensions];
-                    va_list dims;
-                    va_start(dims, num_dimensions);
-                    unsigned int curr_dim;
-                    for(unsigned int n = 0; n < num_dimensions; n++)
-                    {   
-                        dimensions[n]=va_arg(dims, unsigned int);
-                    };
-                    va_end(dims);
-                */
+                dimensions = new unsigned int [num_dimensions];
+                va_list dims;
+                va_start(dims, num_dimensions);
+                unsigned int curr_dim;
+                for(unsigned int n = 0; n < num_dimensions; n++)
+                {   
+                    dimensions[n]=va_arg(dims, unsigned int);
+                };
+                va_end(dims);
             };
 
             template <typename BASE, typename ARG, unsigned int ND>
@@ -166,12 +138,73 @@
                 return type_ptr;
             };
 
+            template <typename BASE, typename ARG, unsigned int ND>
+            void MULTI<BASE,ARG,ND>::prune()
+            {
+                return Template::Arrays::freePointers<heap_type>(&value_ptr,dimensions);
+            }; 
+
+            template <typename BASE, typename ARG, unsigned int ND>
+            void MULTI<BASE,ARG,ND>::printValues(unsigned int col_size = 10)
+            {
+                Serial.println();
+                unsigned int* indices = new unsigned int [num_dimensions+1];
+                const char* ind_str = "Idx";
+                int ind_size = strlen(ind_str);
+                unsigned int ind_num_spaces = (unsigned int)max(((int)num_dimensions-1)*2-ind_size,0);
+                unsigned int bord_length = ind_size;
+                Serial.write(ind_str); //length of 5 for OUTPUT not actual memory length
+                for(int i = 0; i < ind_num_spaces; i++)
+                {
+                    Serial.write(' ');
+                    bord_length++;
+                };
+                Serial.write('|');
+                bord_length++;
+                char* i_str;
+                for(int i = 0; i < dimensions[num_dimensions-1]; i++)
+                {
+                    for(int i = 0; i < col_size/2; i++)
+                    {
+                        Serial.write(' ');
+                        bord_length++;
+                    };
+                    i_str = Datatypes::toCharArray(i);
+                    Serial.write('C');
+                    Serial.write(i_str);
+                    bord_length++;
+                    bord_length+=strlen(i_str);
+                    delete i_str;
+
+                    for(int i = 0; i < col_size/2; i++)
+                    {
+                        Serial.write(' ');
+                        bord_length++;
+                    };
+                    if((col_size/2)*2 < col_size)
+                    {
+                        Serial.write(' ');
+                        bord_length++;
+                    };
+                    Serial.write('|');
+                    bord_length++;
+                };
+                Serial.println();
+                for(int i = 0; i < bord_length; i++)
+                {
+                    Serial.write('-');
+                };
+                Serial.println();
+                Template::Arrays::printValues<heap_type>(&value_ptr, num_dimensions, dimensions, indices,col_size);
+                delete indices;
+            }; 
+
             /////////////////////////////////////// Class template without N --> Contains only singular Data ////////////////////////////////////
 
             template <typename ARG, typename BASE>
             SINGLE<ARG, BASE>::SINGLE(ARG value)
             {
-                value_ptr = Container::init<BASE>(value);
+                value_ptr = Container::assignValue<BASE>(value);
                 type_ptr = Datatypes::get(value);
             };
 
@@ -185,7 +218,7 @@
             template <typename ARG, typename BASE>
             char* SINGLE<ARG,BASE>::valueToString()
             {
-                return Datatypes::toCharArray(this->value());
+                return Datatypes::toCharArray(value_ptr);
             };
 
             template <typename ARG, typename BASE>
@@ -203,6 +236,20 @@
             char* SINGLE<ARG,BASE>::type()
             {
                 return type_ptr;
+            };
+
+            template <typename ARG, typename BASE>
+            void SINGLE<ARG,BASE>::prune()
+            {
+                delete value_ptr;
+            };
+
+            template <typename ARG, typename BASE>
+            void SINGLE<ARG,BASE>::printValues()
+            {
+                char* str = Datatypes::toCharArray(value_ptr);
+                Serial.println(str);
+                delete str;
             };
         };
 #endif

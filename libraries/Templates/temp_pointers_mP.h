@@ -6,519 +6,519 @@ namespace Template
 	namespace Modify
 	{
 		template<typename T, unsigned int N>
-		struct makePointer;
+		struct addNPointers;
 		template<typename T>
-		struct makePointer<T,1>;
+		struct addNPointers<T,1>;
 		template<typename T>
-		struct makePointer<T,2>;
+		struct addNPointers<T,2>;
 		template<typename T>
-		struct makePointer<T,3>;
+		struct addNPointers<T,3>;
 		template<typename T>
-		struct makePointer<T,4>;
+		struct addNPointers<T,4>;
 		template<typename T>
-		struct makePointer<T,5>;
+		struct addNPointers<T,5>;
 		template<typename T>
-		struct makePointer<T,6>;
+		struct addNPointers<T,6>;
 		template<typename T>
-		struct makePointer<T,7>;
+		struct addNPointers<T,7>;
 		template<typename T>
-		struct makePointer<T,8>;
+		struct addNPointers<T,8>;
 		template<typename T>
-		struct makePointer<T,9>;
+		struct addNPointers<T,9>;
 		template<typename T>
-		struct makePointer<T,10>;
+		struct addNPointers<T,10>;
 		template<typename T>
-		struct makePointer<T,11>;
+		struct addNPointers<T,11>;
 		template<typename T>
-		struct makePointer<T,12>;
+		struct addNPointers<T,12>;
 		template<typename T>
-		struct makePointer<T,13>;
+		struct addNPointers<T,13>;
 		template<typename T>
-		struct makePointer<T,14>;
+		struct addNPointers<T,14>;
 		template<typename T>
-		struct makePointer<T,15>;
+		struct addNPointers<T,15>;
 		template<typename T>
-		struct makePointer<T,16>;
+		struct addNPointers<T,16>;
 		template<typename T>
-		struct makePointer<T,17>;
+		struct addNPointers<T,17>;
 		template<typename T>
-		struct makePointer<T,18>;
+		struct addNPointers<T,18>;
 		template<typename T>
-		struct makePointer<T,19>;
+		struct addNPointers<T,19>;
 		template<typename T>
-		struct makePointer<T,20>;
+		struct addNPointers<T,20>;
 		template<typename T>
-		struct makePointer<T,21>;
+		struct addNPointers<T,21>;
 		template<typename T>
-		struct makePointer<T,22>;
+		struct addNPointers<T,22>;
 		template<typename T>
-		struct makePointer<T,23>;
+		struct addNPointers<T,23>;
 		template<typename T>
-		struct makePointer<T,24>;
+		struct addNPointers<T,24>;
 		template<typename T>
-		struct makePointer<T,25>;
+		struct addNPointers<T,25>;
 		template<typename T>
-		struct makePointer<T,26>;
+		struct addNPointers<T,26>;
 		template<typename T>
-		struct makePointer<T,27>;
+		struct addNPointers<T,27>;
 		template<typename T>
-		struct makePointer<T,28>;
+		struct addNPointers<T,28>;
 		template<typename T>
-		struct makePointer<T,29>;
+		struct addNPointers<T,29>;
 		template<typename T>
-		struct makePointer<T,30>;
+		struct addNPointers<T,30>;
 		template<typename T>
-		struct makePointer<T,31>;
+		struct addNPointers<T,31>;
 		template<typename T>
-		struct makePointer<T,32>;
+		struct addNPointers<T,32>;
 		template<typename T>
-		struct makePointer<T,33>;
+		struct addNPointers<T,33>;
 		template<typename T>
-		struct makePointer<T,34>;
+		struct addNPointers<T,34>;
 		template<typename T>
-		struct makePointer<T,35>;
+		struct addNPointers<T,35>;
 		template<typename T>
-		struct makePointer<T,36>;
+		struct addNPointers<T,36>;
 		template<typename T>
-		struct makePointer<T,37>;
+		struct addNPointers<T,37>;
 		template<typename T>
-		struct makePointer<T,38>;
+		struct addNPointers<T,38>;
 		template<typename T>
-		struct makePointer<T,39>;
+		struct addNPointers<T,39>;
 		template<typename T>
-		struct makePointer<T,40>;
+		struct addNPointers<T,40>;
 		template<typename T>
-		struct makePointer<T,41>;
+		struct addNPointers<T,41>;
 		template<typename T>
-		struct makePointer<T,42>;
+		struct addNPointers<T,42>;
 		template<typename T>
-		struct makePointer<T,43>;
+		struct addNPointers<T,43>;
 		template<typename T>
-		struct makePointer<T,44>;
+		struct addNPointers<T,44>;
 		template<typename T>
-		struct makePointer<T,45>;
+		struct addNPointers<T,45>;
 		template<typename T>
-		struct makePointer<T,46>;
+		struct addNPointers<T,46>;
 		template<typename T>
-		struct makePointer<T,47>;
+		struct addNPointers<T,47>;
 		template<typename T>
-		struct makePointer<T,48>;
+		struct addNPointers<T,48>;
 		template<typename T>
-		struct makePointer<T,49>;
+		struct addNPointers<T,49>;
 		template<typename T>
-		struct makePointer<T,50>;
+		struct addNPointers<T,50>;
 		template<typename T>
-		struct makePointer<T,51>;
+		struct addNPointers<T,51>;
 		template<typename T>
-		struct makePointer<T,52>;
+		struct addNPointers<T,52>;
 		template<typename T>
-		struct makePointer<T,53>;
+		struct addNPointers<T,53>;
 		template<typename T>
-		struct makePointer<T,54>;
+		struct addNPointers<T,54>;
 		template<typename T>
-		struct makePointer<T,55>;
+		struct addNPointers<T,55>;
 		template<typename T>
-		struct makePointer<T,56>;
+		struct addNPointers<T,56>;
 		template<typename T>
-		struct makePointer<T,57>;
+		struct addNPointers<T,57>;
 		template<typename T>
-		struct makePointer<T,58>;
+		struct addNPointers<T,58>;
 		template<typename T>
-		struct makePointer<T,59>;
+		struct addNPointers<T,59>;
 		template<typename T>
-		struct makePointer<T,60>;
+		struct addNPointers<T,60>;
 		template<typename T>
-		struct makePointer<T,61>;
+		struct addNPointers<T,61>;
 		template<typename T>
-		struct makePointer<T,62>;
+		struct addNPointers<T,62>;
 		template<typename T>
-		struct makePointer<T,63>;
+		struct addNPointers<T,63>;
 		template<typename T>
-		struct makePointer<T,64>;
+		struct addNPointers<T,64>;
 		template<typename T>
-		struct makePointer<T,65>;
+		struct addNPointers<T,65>;
 		template<typename T>
-		struct makePointer<T,66>;
+		struct addNPointers<T,66>;
 		template<typename T>
-		struct makePointer<T,67>;
+		struct addNPointers<T,67>;
 		template<typename T>
-		struct makePointer<T,68>;
+		struct addNPointers<T,68>;
 		template<typename T>
-		struct makePointer<T,69>;
+		struct addNPointers<T,69>;
 		template<typename T>
-		struct makePointer<T,70>;
+		struct addNPointers<T,70>;
 		template<typename T>
-		struct makePointer<T,71>;
+		struct addNPointers<T,71>;
 		template<typename T>
-		struct makePointer<T,72>;
+		struct addNPointers<T,72>;
 		template<typename T>
-		struct makePointer<T,73>;
+		struct addNPointers<T,73>;
 		template<typename T>
-		struct makePointer<T,74>;
+		struct addNPointers<T,74>;
 		template<typename T>
-		struct makePointer<T,75>;
+		struct addNPointers<T,75>;
 		template<typename T>
-		struct makePointer<T,76>;
+		struct addNPointers<T,76>;
 		template<typename T>
-		struct makePointer<T,77>;
+		struct addNPointers<T,77>;
 		template<typename T>
-		struct makePointer<T,78>;
+		struct addNPointers<T,78>;
 		template<typename T>
-		struct makePointer<T,79>;
+		struct addNPointers<T,79>;
 		template<typename T>
-		struct makePointer<T,80>;
+		struct addNPointers<T,80>;
 		template<typename T>
-		struct makePointer<T,81>;
+		struct addNPointers<T,81>;
 		template<typename T>
-		struct makePointer<T,82>;
+		struct addNPointers<T,82>;
 		template<typename T>
-		struct makePointer<T,83>;
+		struct addNPointers<T,83>;
 		template<typename T>
-		struct makePointer<T,84>;
+		struct addNPointers<T,84>;
 		template<typename T>
-		struct makePointer<T,85>;
+		struct addNPointers<T,85>;
 		template<typename T>
-		struct makePointer<T,86>;
+		struct addNPointers<T,86>;
 		template<typename T>
-		struct makePointer<T,87>;
+		struct addNPointers<T,87>;
 		template<typename T>
-		struct makePointer<T,88>;
+		struct addNPointers<T,88>;
 		template<typename T>
-		struct makePointer<T,89>;
+		struct addNPointers<T,89>;
 		template<typename T>
-		struct makePointer<T,90>;
+		struct addNPointers<T,90>;
 		template<typename T>
-		struct makePointer<T,91>;
+		struct addNPointers<T,91>;
 		template<typename T>
-		struct makePointer<T,92>;
+		struct addNPointers<T,92>;
 		template<typename T>
-		struct makePointer<T,93>;
+		struct addNPointers<T,93>;
 		template<typename T>
-		struct makePointer<T,94>;
+		struct addNPointers<T,94>;
 		template<typename T>
-		struct makePointer<T,95>;
+		struct addNPointers<T,95>;
 		template<typename T>
-		struct makePointer<T,96>;
+		struct addNPointers<T,96>;
 		template<typename T>
-		struct makePointer<T,97>;
+		struct addNPointers<T,97>;
 		template<typename T>
-		struct makePointer<T,98>;
+		struct addNPointers<T,98>;
 		template<typename T>
-		struct makePointer<T,99>;
+		struct addNPointers<T,99>;
 		template<typename T>
-		struct makePointer<T,100>;
+		struct addNPointers<T,100>;
 		template<typename T>
-		struct makePointer<T,101>;
+		struct addNPointers<T,101>;
 		template<typename T>
-		struct makePointer<T,102>;
+		struct addNPointers<T,102>;
 		template<typename T>
-		struct makePointer<T,103>;
+		struct addNPointers<T,103>;
 		template<typename T>
-		struct makePointer<T,104>;
+		struct addNPointers<T,104>;
 		template<typename T>
-		struct makePointer<T,105>;
+		struct addNPointers<T,105>;
 		template<typename T>
-		struct makePointer<T,106>;
+		struct addNPointers<T,106>;
 		template<typename T>
-		struct makePointer<T,107>;
+		struct addNPointers<T,107>;
 		template<typename T>
-		struct makePointer<T,108>;
+		struct addNPointers<T,108>;
 		template<typename T>
-		struct makePointer<T,109>;
+		struct addNPointers<T,109>;
 		template<typename T>
-		struct makePointer<T,110>;
+		struct addNPointers<T,110>;
 		template<typename T>
-		struct makePointer<T,111>;
+		struct addNPointers<T,111>;
 		template<typename T>
-		struct makePointer<T,112>;
+		struct addNPointers<T,112>;
 		template<typename T>
-		struct makePointer<T,113>;
+		struct addNPointers<T,113>;
 		template<typename T>
-		struct makePointer<T,114>;
+		struct addNPointers<T,114>;
 		template<typename T>
-		struct makePointer<T,115>;
+		struct addNPointers<T,115>;
 		template<typename T>
-		struct makePointer<T,116>;
+		struct addNPointers<T,116>;
 		template<typename T>
-		struct makePointer<T,117>;
+		struct addNPointers<T,117>;
 		template<typename T>
-		struct makePointer<T,118>;
+		struct addNPointers<T,118>;
 		template<typename T>
-		struct makePointer<T,119>;
+		struct addNPointers<T,119>;
 		template<typename T>
-		struct makePointer<T,120>;
+		struct addNPointers<T,120>;
 		template<typename T>
-		struct makePointer<T,121>;
+		struct addNPointers<T,121>;
 		template<typename T>
-		struct makePointer<T,122>;
+		struct addNPointers<T,122>;
 		template<typename T>
-		struct makePointer<T,123>;
+		struct addNPointers<T,123>;
 		template<typename T>
-		struct makePointer<T,124>;
+		struct addNPointers<T,124>;
 		template<typename T>
-		struct makePointer<T,125>;
+		struct addNPointers<T,125>;
 		template<typename T>
-		struct makePointer<T,126>;
+		struct addNPointers<T,126>;
 		template<typename T>
-		struct makePointer<T,127>;
+		struct addNPointers<T,127>;
 		template<typename T>
-		struct makePointer<T,128>;
+		struct addNPointers<T,128>;
 		template<typename T>
-		struct makePointer<T,129>;
+		struct addNPointers<T,129>;
 		template<typename T>
-		struct makePointer<T,130>;
+		struct addNPointers<T,130>;
 		template<typename T>
-		struct makePointer<T,131>;
+		struct addNPointers<T,131>;
 		template<typename T>
-		struct makePointer<T,132>;
+		struct addNPointers<T,132>;
 		template<typename T>
-		struct makePointer<T,133>;
+		struct addNPointers<T,133>;
 		template<typename T>
-		struct makePointer<T,134>;
+		struct addNPointers<T,134>;
 		template<typename T>
-		struct makePointer<T,135>;
+		struct addNPointers<T,135>;
 		template<typename T>
-		struct makePointer<T,136>;
+		struct addNPointers<T,136>;
 		template<typename T>
-		struct makePointer<T,137>;
+		struct addNPointers<T,137>;
 		template<typename T>
-		struct makePointer<T,138>;
+		struct addNPointers<T,138>;
 		template<typename T>
-		struct makePointer<T,139>;
+		struct addNPointers<T,139>;
 		template<typename T>
-		struct makePointer<T,140>;
+		struct addNPointers<T,140>;
 		template<typename T>
-		struct makePointer<T,141>;
+		struct addNPointers<T,141>;
 		template<typename T>
-		struct makePointer<T,142>;
+		struct addNPointers<T,142>;
 		template<typename T>
-		struct makePointer<T,143>;
+		struct addNPointers<T,143>;
 		template<typename T>
-		struct makePointer<T,144>;
+		struct addNPointers<T,144>;
 		template<typename T>
-		struct makePointer<T,145>;
+		struct addNPointers<T,145>;
 		template<typename T>
-		struct makePointer<T,146>;
+		struct addNPointers<T,146>;
 		template<typename T>
-		struct makePointer<T,147>;
+		struct addNPointers<T,147>;
 		template<typename T>
-		struct makePointer<T,148>;
+		struct addNPointers<T,148>;
 		template<typename T>
-		struct makePointer<T,149>;
+		struct addNPointers<T,149>;
 		template<typename T>
-		struct makePointer<T,150>;
+		struct addNPointers<T,150>;
 		template<typename T>
-		struct makePointer<T,151>;
+		struct addNPointers<T,151>;
 		template<typename T>
-		struct makePointer<T,152>;
+		struct addNPointers<T,152>;
 		template<typename T>
-		struct makePointer<T,153>;
+		struct addNPointers<T,153>;
 		template<typename T>
-		struct makePointer<T,154>;
+		struct addNPointers<T,154>;
 		template<typename T>
-		struct makePointer<T,155>;
+		struct addNPointers<T,155>;
 		template<typename T>
-		struct makePointer<T,156>;
+		struct addNPointers<T,156>;
 		template<typename T>
-		struct makePointer<T,157>;
+		struct addNPointers<T,157>;
 		template<typename T>
-		struct makePointer<T,158>;
+		struct addNPointers<T,158>;
 		template<typename T>
-		struct makePointer<T,159>;
+		struct addNPointers<T,159>;
 		template<typename T>
-		struct makePointer<T,160>;
+		struct addNPointers<T,160>;
 		template<typename T>
-		struct makePointer<T,161>;
+		struct addNPointers<T,161>;
 		template<typename T>
-		struct makePointer<T,162>;
+		struct addNPointers<T,162>;
 		template<typename T>
-		struct makePointer<T,163>;
+		struct addNPointers<T,163>;
 		template<typename T>
-		struct makePointer<T,164>;
+		struct addNPointers<T,164>;
 		template<typename T>
-		struct makePointer<T,165>;
+		struct addNPointers<T,165>;
 		template<typename T>
-		struct makePointer<T,166>;
+		struct addNPointers<T,166>;
 		template<typename T>
-		struct makePointer<T,167>;
+		struct addNPointers<T,167>;
 		template<typename T>
-		struct makePointer<T,168>;
+		struct addNPointers<T,168>;
 		template<typename T>
-		struct makePointer<T,169>;
+		struct addNPointers<T,169>;
 		template<typename T>
-		struct makePointer<T,170>;
+		struct addNPointers<T,170>;
 		template<typename T>
-		struct makePointer<T,171>;
+		struct addNPointers<T,171>;
 		template<typename T>
-		struct makePointer<T,172>;
+		struct addNPointers<T,172>;
 		template<typename T>
-		struct makePointer<T,173>;
+		struct addNPointers<T,173>;
 		template<typename T>
-		struct makePointer<T,174>;
+		struct addNPointers<T,174>;
 		template<typename T>
-		struct makePointer<T,175>;
+		struct addNPointers<T,175>;
 		template<typename T>
-		struct makePointer<T,176>;
+		struct addNPointers<T,176>;
 		template<typename T>
-		struct makePointer<T,177>;
+		struct addNPointers<T,177>;
 		template<typename T>
-		struct makePointer<T,178>;
+		struct addNPointers<T,178>;
 		template<typename T>
-		struct makePointer<T,179>;
+		struct addNPointers<T,179>;
 		template<typename T>
-		struct makePointer<T,180>;
+		struct addNPointers<T,180>;
 		template<typename T>
-		struct makePointer<T,181>;
+		struct addNPointers<T,181>;
 		template<typename T>
-		struct makePointer<T,182>;
+		struct addNPointers<T,182>;
 		template<typename T>
-		struct makePointer<T,183>;
+		struct addNPointers<T,183>;
 		template<typename T>
-		struct makePointer<T,184>;
+		struct addNPointers<T,184>;
 		template<typename T>
-		struct makePointer<T,185>;
+		struct addNPointers<T,185>;
 		template<typename T>
-		struct makePointer<T,186>;
+		struct addNPointers<T,186>;
 		template<typename T>
-		struct makePointer<T,187>;
+		struct addNPointers<T,187>;
 		template<typename T>
-		struct makePointer<T,188>;
+		struct addNPointers<T,188>;
 		template<typename T>
-		struct makePointer<T,189>;
+		struct addNPointers<T,189>;
 		template<typename T>
-		struct makePointer<T,190>;
+		struct addNPointers<T,190>;
 		template<typename T>
-		struct makePointer<T,191>;
+		struct addNPointers<T,191>;
 		template<typename T>
-		struct makePointer<T,192>;
+		struct addNPointers<T,192>;
 		template<typename T>
-		struct makePointer<T,193>;
+		struct addNPointers<T,193>;
 		template<typename T>
-		struct makePointer<T,194>;
+		struct addNPointers<T,194>;
 		template<typename T>
-		struct makePointer<T,195>;
+		struct addNPointers<T,195>;
 		template<typename T>
-		struct makePointer<T,196>;
+		struct addNPointers<T,196>;
 		template<typename T>
-		struct makePointer<T,197>;
+		struct addNPointers<T,197>;
 		template<typename T>
-		struct makePointer<T,198>;
+		struct addNPointers<T,198>;
 		template<typename T>
-		struct makePointer<T,199>;
+		struct addNPointers<T,199>;
 		template<typename T>
-		struct makePointer<T,200>;
+		struct addNPointers<T,200>;
 		template<typename T>
-		struct makePointer<T,201>;
+		struct addNPointers<T,201>;
 		template<typename T>
-		struct makePointer<T,202>;
+		struct addNPointers<T,202>;
 		template<typename T>
-		struct makePointer<T,203>;
+		struct addNPointers<T,203>;
 		template<typename T>
-		struct makePointer<T,204>;
+		struct addNPointers<T,204>;
 		template<typename T>
-		struct makePointer<T,205>;
+		struct addNPointers<T,205>;
 		template<typename T>
-		struct makePointer<T,206>;
+		struct addNPointers<T,206>;
 		template<typename T>
-		struct makePointer<T,207>;
+		struct addNPointers<T,207>;
 		template<typename T>
-		struct makePointer<T,208>;
+		struct addNPointers<T,208>;
 		template<typename T>
-		struct makePointer<T,209>;
+		struct addNPointers<T,209>;
 		template<typename T>
-		struct makePointer<T,210>;
+		struct addNPointers<T,210>;
 		template<typename T>
-		struct makePointer<T,211>;
+		struct addNPointers<T,211>;
 		template<typename T>
-		struct makePointer<T,212>;
+		struct addNPointers<T,212>;
 		template<typename T>
-		struct makePointer<T,213>;
+		struct addNPointers<T,213>;
 		template<typename T>
-		struct makePointer<T,214>;
+		struct addNPointers<T,214>;
 		template<typename T>
-		struct makePointer<T,215>;
+		struct addNPointers<T,215>;
 		template<typename T>
-		struct makePointer<T,216>;
+		struct addNPointers<T,216>;
 		template<typename T>
-		struct makePointer<T,217>;
+		struct addNPointers<T,217>;
 		template<typename T>
-		struct makePointer<T,218>;
+		struct addNPointers<T,218>;
 		template<typename T>
-		struct makePointer<T,219>;
+		struct addNPointers<T,219>;
 		template<typename T>
-		struct makePointer<T,220>;
+		struct addNPointers<T,220>;
 		template<typename T>
-		struct makePointer<T,221>;
+		struct addNPointers<T,221>;
 		template<typename T>
-		struct makePointer<T,222>;
+		struct addNPointers<T,222>;
 		template<typename T>
-		struct makePointer<T,223>;
+		struct addNPointers<T,223>;
 		template<typename T>
-		struct makePointer<T,224>;
+		struct addNPointers<T,224>;
 		template<typename T>
-		struct makePointer<T,225>;
+		struct addNPointers<T,225>;
 		template<typename T>
-		struct makePointer<T,226>;
+		struct addNPointers<T,226>;
 		template<typename T>
-		struct makePointer<T,227>;
+		struct addNPointers<T,227>;
 		template<typename T>
-		struct makePointer<T,228>;
+		struct addNPointers<T,228>;
 		template<typename T>
-		struct makePointer<T,229>;
+		struct addNPointers<T,229>;
 		template<typename T>
-		struct makePointer<T,230>;
+		struct addNPointers<T,230>;
 		template<typename T>
-		struct makePointer<T,231>;
+		struct addNPointers<T,231>;
 		template<typename T>
-		struct makePointer<T,232>;
+		struct addNPointers<T,232>;
 		template<typename T>
-		struct makePointer<T,233>;
+		struct addNPointers<T,233>;
 		template<typename T>
-		struct makePointer<T,234>;
+		struct addNPointers<T,234>;
 		template<typename T>
-		struct makePointer<T,235>;
+		struct addNPointers<T,235>;
 		template<typename T>
-		struct makePointer<T,236>;
+		struct addNPointers<T,236>;
 		template<typename T>
-		struct makePointer<T,237>;
+		struct addNPointers<T,237>;
 		template<typename T>
-		struct makePointer<T,238>;
+		struct addNPointers<T,238>;
 		template<typename T>
-		struct makePointer<T,239>;
+		struct addNPointers<T,239>;
 		template<typename T>
-		struct makePointer<T,240>;
+		struct addNPointers<T,240>;
 		template<typename T>
-		struct makePointer<T,241>;
+		struct addNPointers<T,241>;
 		template<typename T>
-		struct makePointer<T,242>;
+		struct addNPointers<T,242>;
 		template<typename T>
-		struct makePointer<T,243>;
+		struct addNPointers<T,243>;
 		template<typename T>
-		struct makePointer<T,244>;
+		struct addNPointers<T,244>;
 		template<typename T>
-		struct makePointer<T,245>;
+		struct addNPointers<T,245>;
 		template<typename T>
-		struct makePointer<T,246>;
+		struct addNPointers<T,246>;
 		template<typename T>
-		struct makePointer<T,247>;
+		struct addNPointers<T,247>;
 		template<typename T>
-		struct makePointer<T,248>;
+		struct addNPointers<T,248>;
 		template<typename T>
-		struct makePointer<T,249>;
+		struct addNPointers<T,249>;
 		template<typename T>
-		struct makePointer<T,250>;
+		struct addNPointers<T,250>;
 		template<typename T>
-		struct makePointer<T,251>;
+		struct addNPointers<T,251>;
 		template<typename T>
-		struct makePointer<T,252>;
+		struct addNPointers<T,252>;
 		template<typename T>
-		struct makePointer<T,253>;
+		struct addNPointers<T,253>;
 		template<typename T>
-		struct makePointer<T,254>;
+		struct addNPointers<T,254>;
 		template<typename T>
-		struct makePointer<T,255>;
+		struct addNPointers<T,255>;
 		template<typename T>
-		struct makePointer<T,256>;
+		struct addNPointers<T,256>;
 	};
 }
 #include "temp_pointers_mP.hpp"

@@ -46,20 +46,17 @@ void setup(){
   //Serial.println(test_container2.valueToString());
   //Serial.println(test_container2.value()[0]);
 
-  double test_data[4][1][2]={{{11.0,1.0}},{{22.0,2.0}},{{33.0,3.0}},{{44.0,4.0}}};
   Serial.println(getFreeMemory());
   //Template::Structs::ArrayData* data = Template::Arrays::getArrayData(&test_data);
   //Serial.println(data->num_dimensions);
   //data->printDimensions();
   //data->prune(data);
-  Serial.println();
-  Serial.println(getFreeMemory());
-  Serial.println();  
   //test(&test_data);
 
-  double test_data2[2] = {1.0,1.0};  
-  double test_data3[3][2][2][3]={{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}},{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}},{{{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0}}}};
-  Container::MULTI<double,double(*)[3][2][2][3],4> test_container2(&test_data3, "double", true);
+  double test_data3[3][3][3][3]={{{{1.0,2.0,3.0},{1.0,2.0,3.0},{1.0,2.0,3.0}},{4.0,5.0,6.0},{7.0,8.0,9.0}},{{11.0,11.0,11.0},{11.0,11.0,11.0},{11.0,11.0,11.0}},{{13.0,14.0,15.0},{11.0,11.0,11.0},{16.0,17.0,18.0}}};
+  int test_data4[3][3][3]={{{1,2,3},{4,5,6},{7,8,9}},{{},{},{}},{{},{},{}}};
+  Container::MULTI<int,int(*)[3][3][3],3> test_container2(&test_data4, "double", true); //1 + 3^1 + 3^2 + 3^3... and so on for each additional dimension
+  test_container2.printValues(4);
 }
 
 int freq = 2000;

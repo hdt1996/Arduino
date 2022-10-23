@@ -38,7 +38,7 @@
       
 
       template<typename BASE>
-      Map<BASE>* init()
+      Map<BASE>* allocMap()
       {
         Map<BASE>* htbl = new Map<BASE>; //assign memory pointer location for this datatype
         htbl->entries = new Entry<BASE>* [sizeof(Entry<BASE>)*TABLE_SIZE];//malloc(sizeof(Entry) * TABLE_SIZE);
@@ -249,9 +249,9 @@
     };
 
    template <typename ARG, typename BASE>
-    HashMap::Map<BASE>* Dictionary<ARG, BASE>::init()
+    HashMap::Map<BASE>* Dictionary<ARG, BASE>::allocMap()
     {
-      return HashMap::init<BASE>();
+      return HashMap::allocMap<BASE>();
     };
 
    template <typename ARG, typename BASE>
@@ -263,7 +263,7 @@
    template <typename ARG, typename BASE>
     Dictionary<ARG, BASE>::Dictionary()
     {
-      hashtable=this->init();
+      hashtable=this->allocMap();
     };
 
    template <typename ARG, typename BASE>

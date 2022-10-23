@@ -2,6 +2,9 @@
     #define TEMPLATE_ARRAYS
     #include <Arduino.h>
     #include "temp_arrays_aP.h"
+    #include "temp_arrays_sP.h"
+    #include "temp_arrays_fP.h"
+    #include "temp_arrays_pV.h"
     namespace Template
     {
         namespace Checks
@@ -54,17 +57,22 @@
             template<typename T>
             Structs::ArrayData* getArrayData(T args);
 
+            extern unsigned int alloc_pointers;
+
             template<typename PTR>
-            void allocPointer(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
+            void allocPointers(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
         
             template<typename T>
             unsigned int getNDimsbyType();
 
-            template<typename PTR, typename ARG>
-            void setPointer(double* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
+            template<typename PTR>
+            void freePointers(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
 
             template<typename PTR, typename ARG>
-            void setPointer(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
+            void setPointers(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
+
+            template<typename PTR>
+            void printValues(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);  
         };
     };
     #include "temp_arrays.hpp""

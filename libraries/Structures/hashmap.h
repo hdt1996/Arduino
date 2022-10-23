@@ -15,7 +15,7 @@
             struct Map;
 
             template<typename BASE>
-            Map<BASE>* init();
+            Map<BASE>* allocMap();
 
             template<typename ARG, typename BASE>
             void updateValue(Entry<BASE>* entry, ARG value);
@@ -47,7 +47,7 @@
         {
             private:
                 unsigned int hash(const char *key);
-                HashMap::Map<BASE>* init();
+                HashMap::Map<BASE>* allocMap();
                 HashMap::Entry<BASE>* allocEntry(const char key, ARG value);
                 HashMap::Map<BASE>* hashtable;
             public:

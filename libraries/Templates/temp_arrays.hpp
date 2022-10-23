@@ -1,6 +1,8 @@
 #ifndef TEMPLATE_ARRAYS_HPP 
     #define TEMPLATE_ARRAYS_HPP
     #include "temp_pointers.h"
+    #include "datatypes.h"
+
     namespace Template
     {
         namespace Checks
@@ -25,14 +27,12 @@
             struct remove_dimension<T(*)[N]>
             {
                 typedef T type;
-                const char* msg = "REMOVED POINTER TO ARRAY DIMENSION";
             };
 
             template<typename T, int N> //array
             struct remove_dimension<T[N]> 
             {
                 typedef T type;
-                const char* msg = "REMOVED REGULAR ARRAY DIMENSION";
             };
         };
         
@@ -121,65 +121,61 @@
                 return NULL;
             };
 
+
             
             template<typename PTR>
-            void allocPointer(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1) //0, 3, 3, 3
+            void allocPointers(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1) //0, 3, 3, 3
             {
                 // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
                 unsigned int ndims = dimensions[current]; 
                 for(int i = 0; i < prev; i++) 
                 {
-                    typedef typename Template::Modify::remove_pointer<PTR>::type less_type;
-                    pointer[i] = new less_type[ndims]; 
-                };
-
-                current++; 
-                for(int d = 0; d < prev; d++)
-                {
-                    typedef typename Template::Modify::remove_pointer<PTR>::type less_type;
-                    /*
-                    Serial.print("allocPointer Current Dimension: ");
-                    Serial.print(current);
-                    Serial.println();
-                    Serial.println("allocPointer: IS POINTER");
-                    Serial.println();
-                    */
-                    allocPointer<less_type>(pointer[d], dimensions, current, ndims);
+                    typedef typename Template::Modify::lessPointer<PTR>::type less_type;
+                    pointer[i] = new less_type[ndims];
+                    alloc_pointers++;
+                    allocPointers<less_type>(pointer[i], dimensions, current + 1, ndims);
                 };
             };
 
-            template<typename PTR, typename ARG>
-            void setPointer(double* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
-            {
-                // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
-                Serial.println(prev);
-                for(int d = 0; d < prev; d++)
-                {
-                    Serial.print("Assigning Value: ");
-                    Serial.print(value[d]);
-                    Serial.println();
-                    pointer[d] = value[d];
-                };
-            };
-            
-
-            template<typename PTR, typename ARG>
-            void setPointer(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+            template<typename PTR>
+            void freePointers(PTR* pointer, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
             {
                 // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
                 unsigned int ndims = dimensions[current]; 
                 current++; 
                 for(int d = 0; d < prev; d++)
                 {
-                    typedef typename Template::Modify::remove_pointer<PTR>::type less_type;
-                    setPointer<less_type>(pointer[d], value[d], dimensions, current, ndims);
-                    /*
-                    Serial.print("allocPointer Current Dimension: ");
-                    Serial.print(current);
-                    Serial.println();
-                    Serial.println("allocPointer: NOT POINTER");
-                    Serial.println();
-                    */
+                    typedef typename Template::Modify::lessPointer<PTR>::type less_type;
+                    freePointers<less_type>(pointer[d], dimensions, current, ndims);
+                    delete pointer[d];
+                };
+            };
+            
+
+            template<typename PTR, typename ARG>
+            void setPointers(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+            {
+                // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+                unsigned int ndims = dimensions[current]; 
+                current++; 
+                for(int d = 0; d < prev; d++)
+                {
+                    typedef typename Template::Modify::lessPointer<PTR>::type less_type;
+                    setPointers<less_type>(pointer[d], value[d], dimensions, current, ndims);
+                };
+            };
+
+            template<typename PTR>
+            void printValues(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+            {
+                // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+                unsigned int ndims = dimensions[current]; 
+                current++; 
+                for(int d = 0; d < prev; d++)
+                {
+                    indices[current-1] = d;
+                    typedef typename Template::Modify::lessPointer<PTR>::type less_type;
+                    printValues<less_type>(pointer[d], num_dimensions, dimensions, indices, col_size, current, ndims);
                 };
             };
 
@@ -194,6 +190,8 @@
                 };
                 return 0;
             };
+
+
         };
     }
 #endif

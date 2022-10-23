@@ -3,6 +3,7 @@
     #include <Arduino.h>
     #include "temp_pointers_mP.h"
     #include "temp_pointers_dP.h"
+    #include "temp_pointers_rP.h"
     namespace Template
     {
         namespace Checks
@@ -19,13 +20,13 @@
         namespace Modify
         {
             template<typename T>
-            struct add_pointer;
+            struct addPointer;
 
             template<typename T>
-            struct remove_pointer;
+            struct lessPointer;
 
             template<typename T>
-            struct remove_pointer<T*>;
+            struct lessPointer<T*>;
         };
 
         namespace Structs
@@ -62,8 +63,6 @@
 
             template<typename T, typename R>
             R getValue(T arg); 
-
-
         };
     };
     #include "temp_pointers.hpp"

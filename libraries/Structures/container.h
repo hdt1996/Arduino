@@ -18,11 +18,11 @@
             char* update(char* new_value);
 
             template <typename BASE>
-            BASE* init(BASE value);
+            BASE* assignValue(BASE value);
 
             template <typename BASE>
-            char* init(const char* value);
-
+            char* assignValue(const char* value);
+            
             template <typename BASE>
             BASE value(BASE* val_ptr);
 
@@ -30,7 +30,7 @@
             class MULTI: public Unit
             {
                 private:
-                    typedef typename Template::Modify::makePointer<BASE,ND>::type heap_type;
+                    typedef typename Template::Modify::addNPointers<BASE,ND>::type heap_type;
                     unsigned int num_dimensions = Template::Arrays::getNDimsbyType<ARG>();
                     heap_type value_ptr;
                     const char* type_ptr;
@@ -45,6 +45,8 @@
                     BASE* getPointer();
                     BASE value();
                     char* type();
+                    void prune();
+                    void printValues(unsigned int col_size = 10);
             };
 
             template <typename ARG, typename BASE>
@@ -61,6 +63,8 @@
                     BASE* getPointer();
                     BASE value();
                     char* type();
+                    void prune();
+                    void printValues();
             };
             
         };
