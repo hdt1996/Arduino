@@ -11,4 +11,5 @@ pypip_pkgs/
 *.h5
 *.exe
 /.utils/templates/output
+/.vscode
 
