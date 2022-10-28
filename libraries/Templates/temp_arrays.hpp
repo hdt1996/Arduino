@@ -26,7 +26,7 @@
             template<typename T, int N> //pointer to an array
             struct remove_dimension<T(*)[N]>
             {
-                typedef T type;
+                typedef T* type;
             };
 
             template<typename T, int N> //array
@@ -108,8 +108,6 @@
             Structs::ArrayData* getArrayData(T args)
             {
                 unsigned int num_dimensions = getNDims(args); //double(*)[3][3][3]
-                Serial.println("Num Dimensions ......................");
-                Serial.println(num_dimensions);
                 if(num_dimensions > 0)
                 {
                     Structs::ArrayData* data = new Structs::ArrayData;
@@ -152,7 +150,7 @@
             };
             
 
-            template<typename PTR, typename ARG>
+            template<typename PTR, typename ARG> //double *** *     //double(*)[3][3][3] or //double *** *
             void setPointers(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
             {
                 // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
@@ -166,7 +164,7 @@
             };
 
             template<typename PTR>
-            void printValues(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+            void printPTRVals(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
             {
                 // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
                 unsigned int ndims = dimensions[current]; 
@@ -174,8 +172,35 @@
                 for(int d = 0; d < prev; d++)
                 {
                     indices[current-1] = d;
-                    typedef typename Template::Modify::lessPointer<PTR>::type less_type;
-                    printValues<less_type>(pointer[d], num_dimensions, dimensions, indices, col_size, current, ndims);
+                    typedef typename Template::Modify::lessPointer<PTR>::type less_type; //Need to do this because i.e. pointer[d] -> double*** => PTR* and PTR => double**
+                    printPTRVals<less_type>(pointer[d], num_dimensions, dimensions, indices, col_size, current, ndims);
+                };
+            };
+
+            template<typename PTR, typename ARG> //double(*)[3][3]         double **** --> NEED TO deref
+            void setArrays(PTR pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+            {
+                // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+                unsigned int ndims = dimensions[current]; 
+                current++; 
+                for(int d = 0; d < prev; d++)
+                {
+                    typedef typename Template::Modify::remove_dimension<PTR>::type less_type;
+                    setArrays<less_type>(pointer[d], value[d], num_dimensions, dimensions, current, ndims);
+                };
+            };
+
+            template<typename PTR>
+            void printARRVals(PTR pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+            {
+                // WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+                unsigned int ndims = dimensions[current]; 
+                current++; 
+                for(int d = 0; d < prev; d++)
+                {
+                    indices[current-1] = d;
+                    typedef typename Template::Modify::remove_dimension<PTR>::type less_type;
+                    printARRVals<less_type>(pointer[d], num_dimensions, dimensions, indices, col_size, current, ndims);
                 };
             };
 

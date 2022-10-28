@@ -202,11 +202,18 @@ echo -e "\t\ttemplate<typename PTR, typename ARG>
 \t\tvoid setPointers($comb pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\t//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t\tSerial.println(\"Copied...\");
+
+\t\t\t//Manual way...
+\t\t\t/*
 \t\t\tfor(int d = 0; d < prev; d++)
 \t\t\t{
 \t\t\t\tpointer[d] = value[d];
 \t\t\t};
-\t\t};" >> $dest/output/temp_arrays_sP.hpp
+*/
+\t\t};">> $dest/output/temp_arrays_sP.hpp
     done
 
 done
@@ -219,10 +226,17 @@ echo -e "\t\ttemplate<typename PTR, typename ARG>
 \t\tvoid setPointers($comb pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\t//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t\tSerial.println(\"Copied...\");
+
+\t\t\t//Manual way...
+\t\t\t/*
 \t\t\tfor(int d = 0; d < prev; d++)
 \t\t\t{
 \t\t\t\tpointer[d] = value[d];
 \t\t\t};
+*/
 \t\t};">> $dest/output/temp_arrays_sP.hpp
     done
 
@@ -233,10 +247,17 @@ echo -e "\t\ttemplate<typename PTR, typename ARG>
 \t\tvoid setPointers($i* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\t//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t\tSerial.println(\"Copied...\");
+
+\t\t\t//Manual way...
+\t\t\t/*
 \t\t\tfor(int d = 0; d < prev; d++)
 \t\t\t{
 \t\t\t\tpointer[d] = value[d];
 \t\t\t};
+*/
 \t\t};">> $dest/output/temp_arrays_sP.hpp
 done
 
@@ -356,18 +377,19 @@ echo -e "\t};
 #endif" >> $dest/output/temp_arrays_fP.hpp
 
 
-############################################################## printValues ###############################################################
+############################################################## printPTRVals ###############################################################
 # (PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);  
 ############### Declaration #################
 
 echo -e "
-#ifndef TEMP_ARRAYS_PV
-#define TEMP_ARRAYS_PV
+#ifndef TEMP_ARRAYS_PPV
+#define TEMP_ARRAYS_PPV
+#include \"datatypes.h\"
 namespace Template
 {
 \tnamespace Arrays
 \t{
-" > $dest/output/temp_arrays_pV.h
+" > $dest/output/temp_arrays_ppV.h
 
 for i in $signables
 do
@@ -375,7 +397,7 @@ do
     do
     comb="$a $i*"
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_pV.h
+\t\tvoid printPTRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_ppV.h
     done
 
 done
@@ -385,32 +407,32 @@ do
     do
     comb="$a $i*"
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_pV.h
+\t\tvoid printPTRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_ppV.h
     done
 
 done
 for i in $prim_types
 do
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_pV.h
+\t\tvoid printPTRVals($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_ppV.h
     
 
 done
 echo -e "\t};
 }
-#include \"temp_arrays_pV.hpp\"
-#endif" >> $dest/output/temp_arrays_pV.h
+#include \"temp_arrays_ppV.hpp\"
+#endif" >> $dest/output/temp_arrays_ppV.h
 
 
 ##################### Implementation #######################
 echo -e "
-#ifndef TEMP_ARRAYS_PV_HPP
-#define TEMP_ARRAYS_PV_HPP
+#ifndef TEMP_ARRAYS_PPV_HPP
+#define TEMP_ARRAYS_PPV_HPP
 namespace Template
 {
 \tnamespace Arrays
 \t{
-" > $dest/output/temp_arrays_pV.hpp
+" > $dest/output/temp_arrays_ppV.hpp
 
 for i in $signables
 do
@@ -418,7 +440,7 @@ do
     do
     comb="$a $i*"
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\tvoid printPTRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
 \t\t\tchar* num_str;
@@ -426,7 +448,7 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\tfor(int i = 1; i < num_dimensions; i++)
 \t\t\t{
 \t\t\t\tSerial.print(indices[i]);
-\t\t\t\tSerial.write(\' \');
+\t\t\t\tSerial.write(' ');
 \t\t\t};
 \t\t\tSerial.print(\"| \");
 
@@ -438,7 +460,7 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\t\tdelete num_str;
 \t\t\t};
 \t\t\tSerial.println();
-\t\t};" >> $dest/output/temp_arrays_pV.hpp
+\t\t};" >> $dest/output/temp_arrays_ppV.hpp
     done
 
 done
@@ -448,7 +470,7 @@ do
     do
     comb="$a $i*"
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\tvoid printPTRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
 \t\t\tchar* num_str;
@@ -456,7 +478,7 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\tfor(int i = 1; i < num_dimensions; i++)
 \t\t\t{
 \t\t\t\tSerial.print(indices[i]);
-\t\t\t\tSerial.write(\' \');
+\t\t\t\tSerial.write(' ');
 \t\t\t};
 \t\t\tSerial.print(\"| \");
 
@@ -468,14 +490,14 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\t\tdelete num_str;
 \t\t\t};
 \t\t\tSerial.println();
-\t\t};" >> $dest/output/temp_arrays_pV.hpp
+\t\t};" >> $dest/output/temp_arrays_ppV.hpp
     done
 
 done
 for i in $prim_types
 do 
 echo -e "\t\ttemplate<typename PTR>
-\t\tvoid printValues($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\tvoid printPTRVals($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
 \t\t{
 \t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
 \t\t\tchar* num_str;
@@ -483,7 +505,7 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\tfor(int i = 1; i < num_dimensions; i++)
 \t\t\t{
 \t\t\t\tSerial.print(indices[i]);
-\t\t\t\tSerial.write(\' \');
+\t\t\t\tSerial.write(' ');
 \t\t\t};
 \t\t\tSerial.print(\"| \");
 
@@ -495,12 +517,269 @@ echo -e "\t\ttemplate<typename PTR>
 \t\t\t\tdelete num_str;
 \t\t\t};
 \t\t\tSerial.println();
-\t\t};" >> $dest/output/temp_arrays_pV.hpp
+\t\t};" >> $dest/output/temp_arrays_ppV.hpp
     
 
 done
 echo -e "\t};
 }
-#endif" >> $dest/output/temp_arrays_pV.hpp
+#endif" >> $dest/output/temp_arrays_ppV.hpp
+
+read x
+
+
+############################################################## printArrVals ###############################################################
+
+# (PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);  
+
+############### Declaration #################
+
+echo -e "
+#ifndef TEMP_ARRAYS_PAV
+#define TEMP_ARRAYS_PAV
+#include \"datatypes.h\"
+namespace Template
+{
+\tnamespace Arrays
+\t{
+" > $dest/output/temp_arrays_paV.h
+
+for i in $signables
+do
+    for a in $signs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_paV.h
+    done
+
+done
+for i in $longables
+do
+    for a in $longs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_paV.h
+    done
+
+done
+for i in $prim_types
+do
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_paV.h
+    
+
+done
+echo -e "\t};
+}
+#include \"temp_arrays_paV.hpp\"
+#endif" >> $dest/output/temp_arrays_paV.h
+
+
+##################### Implementation #######################
+echo -e "
+#ifndef TEMP_ARRAYS_PAV_HPP
+#define TEMP_ARRAYS_PAV_HPP
+namespace Template
+{
+\tnamespace Arrays
+\t{
+" > $dest/output/temp_arrays_paV.hpp
+
+for i in $signables
+do
+    for a in $signs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\tchar* num_str;
+\t\t\tSerial.print((indices-1)[0]);
+\t\t\tSerial.write(' ');
+\t\t\tfor(int i = 1; i < num_dimensions - 1; i++)
+\t\t\t{
+\t\t\t\tSerial.print(indices[i]);
+\t\t\t\tSerial.write(' ');
+\t\t\t};
+\t\t\tSerial.print(\"| \");
+
+\t\t\tfor(int d = 0; d < prev; d++)
+\t\t\t{
+\t\t\t\tnum_str = Datatypes::toCharArray(pointer[d],col_size);
+\t\t\t\tSerial.write(num_str);
+\t\t\t\tSerial.print(\" | \");
+\t\t\t\tdelete num_str;
+\t\t\t};
+\t\t\tSerial.println();
+\t\t};" >> $dest/output/temp_arrays_paV.hpp
+    done
+
+done
+for i in $longables
+do
+    for a in $longs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($comb pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\tchar* num_str;
+\t\t\tSerial.print((indices-1)[0]);
+\t\t\tSerial.write(' ');
+\t\t\tfor(int i = 1; i < num_dimensions - 1; i++)
+\t\t\t{
+\t\t\t\tSerial.print(indices[i]);
+\t\t\t\tSerial.write(' ');
+\t\t\t};
+\t\t\tSerial.print(\"| \");
+
+\t\t\tfor(int d = 0; d < prev; d++)
+\t\t\t{
+\t\t\t\tnum_str = Datatypes::toCharArray(pointer[d],col_size);
+\t\t\t\tSerial.write(num_str);
+\t\t\t\tSerial.print(\" | \");
+\t\t\t\tdelete num_str;
+\t\t\t};
+\t\t\tSerial.println();
+\t\t};" >> $dest/output/temp_arrays_paV.hpp
+    done
+
+done
+for i in $prim_types
+do 
+echo -e "\t\ttemplate<typename PTR>
+\t\tvoid printARRVals($i* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\t// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+\t\t\tchar* num_str;
+\t\t\tSerial.print((indices-1)[0]);
+\t\t\tSerial.write(' ');
+\t\t\tfor(int i = 1; i < num_dimensions - 1; i++)
+\t\t\t{
+\t\t\t\tSerial.print(indices[i]);
+\t\t\t\tSerial.write(' ');
+\t\t\t};
+\t\t\tSerial.print(\"| \");
+
+\t\t\tfor(int d = 0; d < prev; d++)
+\t\t\t{
+\t\t\t\tnum_str = Datatypes::toCharArray(pointer[d],col_size);
+\t\t\t\tSerial.write(num_str);
+\t\t\t\tSerial.print(\" | \");
+\t\t\t\tdelete num_str;
+\t\t\t};
+\t\t\tSerial.println();
+\t\t};" >> $dest/output/temp_arrays_paV.hpp
+    
+
+done
+echo -e "\t};
+}
+#endif" >> $dest/output/temp_arrays_paV.hpp
+
+read x
+
+
+############################################################## setArrays ###############################################################
+
+
+############### Declaration #################
+
+echo -e "
+#ifndef TEMP_ARRAYS_SA
+#define TEMP_ARRAYS_SA
+#include \"datatypes.h\"
+namespace Template
+{
+\tnamespace Arrays
+\t{
+" > $dest/output/temp_arrays_sA.h
+
+for i in $signables
+do
+    for a in $signs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($comb pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_sA.h
+    done
+
+done
+for i in $longables
+do
+    for a in $longs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($comb pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_sA.h
+    done
+
+done
+for i in $prim_types
+do
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($i* pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);" >> $dest/output/temp_arrays_sA.h
+    
+
+done
+echo -e "\t};
+}
+#include \"temp_arrays_sA.hpp\"
+#endif" >> $dest/output/temp_arrays_sA.h
+
+
+##################### Implementation #######################
+echo -e "
+#ifndef TEMP_ARRAYS_SA_HPP
+#define TEMP_ARRAYS_SA_HPP
+namespace Template
+{
+\tnamespace Arrays
+\t{
+" > $dest/output/temp_arrays_sA.hpp
+
+for i in $signables
+do
+    for a in $signs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($comb pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t};" >> $dest/output/temp_arrays_sA.hpp
+    done
+
+done
+for i in $longables
+do
+    for a in $longs
+    do
+    comb="$a $i*"
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($comb pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t};" >> $dest/output/temp_arrays_sA.hpp
+    done
+
+done
+for i in $prim_types
+do 
+echo -e "\t\ttemplate<typename PTR, typename ARG>
+\t\tvoid setArrays($i* pointer, ARG value, unsigned int num_dimensions, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
+\t\t{
+\t\t\tmemcpy(pointer, value,prev*sizeof(value[0]));
+\t\t};" >> $dest/output/temp_arrays_sA.hpp
+    
+
+done
+echo -e "\t};
+}
+#endif" >> $dest/output/temp_arrays_sA.hpp
 
 read x

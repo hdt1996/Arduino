@@ -4,7 +4,10 @@
     #include "temp_arrays_aP.h"
     #include "temp_arrays_sP.h"
     #include "temp_arrays_fP.h"
-    #include "temp_arrays_pV.h"
+    #include "temp_arrays_paV.h"
+    #include "temp_arrays_ppV.h"
+    #include "temp_arrays_sA.h"
+
     namespace Template
     {
         namespace Checks
@@ -71,8 +74,15 @@
             template<typename PTR, typename ARG>
             void setPointers(PTR* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);
 
+            template<typename PTR,  typename ARG>
+            void setArrays(PTR pointer, ARG value, unsigned int num_dimensions,  unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1);  
+
             template<typename PTR>
-            void printValues(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);  
+            void printPTRVals(PTR* pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);  
+
+            template<typename PTR>
+            void printARRVals(PTR pointer, unsigned int num_dimensions, unsigned int* dimensions, unsigned int* indices, unsigned int col_size = 1, unsigned int current= 0, unsigned int prev = 1);
+
         };
     };
     #include "temp_arrays.hpp""

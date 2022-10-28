@@ -1,0 +1,53 @@
+template<typename T>
+struct remove_pointer
+{
+    typedef T type;
+};
+
+template<typename T>
+struct remove_pointer<T*>{
+    typedef T type;
+};
+
+template<typename T> //not array
+struct remove_dimension{typedef T type;};
+
+template<typename T, int N> //pointer to an array
+struct remove_dimension<T(*)[N]>
+{
+    typedef T* type;
+};
+
+template<typename T, int N> //array
+struct remove_dimension<T[N]> 
+{
+    typedef T type;
+};
+
+double test_array[3][3][3] = {{{1.0,2.0,3.0},{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0},{1.0,2.0,3.0}},{{1.0,2.0,3.0},{1.0,2.0,3.0},{1.0,2.0,3.0}}};
+
+
+double (*tpr)[3][3][3] = &test_array;
+
+
+
+
+
+
+int main()
+{
+    typedef typename remove_pointer<double(*)[3][3][3]>::type test_type; //double(*)[3][3]
+    int x;
+    double(*zz)[3][3] = test_array;
+
+    typedef typename remove_dimension<double(*)[3][3][3]>::type rd_type;
+
+    rd_type xx = new double[3][3][3];
+    double(*yy)[3][3] = new double[3][3][3];
+
+    double (*zy)[3][3] = new test_type;
+
+
+
+    return 0;
+}

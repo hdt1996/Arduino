@@ -10,100 +10,176 @@ namespace Template
 		void setPointers(unsigned int* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(unsigned long* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(unsigned short* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(long int* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(long long* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(long double* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(short* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(int* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(float* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(double* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+  			memcpy(pointer, value,prev*sizeof(value[0]));
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(bool* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
 		{
 			// WE DO NOT NEED EARLY STOPPER FOR RECURSION AKA if current equals some number because there is default template in arrays_aP that handles base pointer type (double*, int*, etc.)
+			//Faster way: Copy whole block instead of one by one. We are not doing multidimensional since this is for uncontiguous multi container
+			memcpy(pointer, value,prev*sizeof(value[0]));
+			
+
+			//Manual way...
+			/*
 			for(int d = 0; d < prev; d++)
 			{
 				pointer[d] = value[d];
 			};
+*/
 		};
 		template<typename PTR, typename ARG>
 		void setPointers(char* pointer, ARG value, unsigned int* dimensions, unsigned int current= 0, unsigned int prev = 1)
